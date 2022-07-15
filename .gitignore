@@ -1,3 +1,4 @@
 .CapstoneProjectTests.m
 .CapstoneProjectUITests.m
 .CapstoneProjectUITestsLaunchTests.m
+Pods/.gitignore
