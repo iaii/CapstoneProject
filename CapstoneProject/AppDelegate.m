@@ -7,7 +7,6 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-#import <Parse/PFFacebookUtils.h>
 
 @interface AppDelegate ()
 
@@ -16,14 +15,10 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    //[PFFacebookUtils initializeFacebook]; //fb login for parse
-
-    // Override point for customization after application launch.
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
 
-            configuration.applicationId = @"vYvX2773RsFsjdTrphr53DHW2l8oFoCO7X1o5pbN"; // <- UPDATE
-            configuration.clientKey = @"nwIuDEd9dckFjXMEWni8aDyY7D4m4UWVU205z0aG"; // <- UPDATE
+            configuration.applicationId = @"bw0KkdHriZgcYxzmluIdRw4zA1j6holOZrtOhTww"; // <- UPDATE
+            configuration.clientKey = @"R8OCPQxUg8PaMmbn4Q3TH7UDmJNvnxkAblB5z3xN"; // <- UPDATE
             configuration.server = @"https://parseapi.back4app.com";
         }];
 
@@ -31,29 +26,6 @@
 
     return YES;
 }
-
-//- (void)applicationDidBecomeActive:(UIApplication *)application {
-//  [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]]; //fb login for parse
-//}
-//
-//
-//- (BOOL)application:(UIApplication *)application
-//        openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication
-//     annotation:(id)annotation {
-//  return [FBAppCall handleOpenURL:url
-//              sourceApplication:sourceApplication
-//                    withSession:[PFFacebookUtils session]];
-//}
-//
-//
-//- (void)applicationWillTerminate:(UIApplication *)application {
-//  [[PFFacebookUtils session] close];
-//}
-
-
-#pragma mark - UISceneSession lifecycle
-
 
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.
