@@ -8,10 +8,6 @@ target 'CapstoneProject' do
   # Pods for CapstoneProject
   pod 'Parse'
   pod 'Parse/UI'
-  pod 'Parse/FacebookUtils'
- 
-
-
 
   target 'CapstoneProjectTests' do
     inherit! :search_paths
