@@ -79,8 +79,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="passwordField" destination="br6-ua-YAB" id="xc0-JE-cFz"/>
-                        <outlet property="usernameField" destination="Ac5-O6-I2f" id="1es-Dm-SEV"/>
+                        <outlet property="passwordField" destination="br6-ua-YAB" id="Cmx-v5-6NB"/>
+                        <outlet property="usernameField" destination="Ac5-O6-I2f" id="1mI-W9-uq7"/>
                         <segue destination="X4K-El-ppt" kind="presentation" identifier="loginSegue" id="gtL-R3-Ede"/>
                     </connections>
                 </viewController>

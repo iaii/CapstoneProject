@@ -10,6 +10,8 @@
 //#import <Parse/PFFacebookUtils.h>
 
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *usernameField;
+@property (weak, nonatomic) IBOutlet UITextView *passwordField;
 
 @end
 
@@ -25,9 +27,9 @@
 }
 
 - (IBAction)didTapLogin:(id)sender {
-    if([self.usernameField.text isEqual:@""]){
-        [self loginAlert];
-    }else{
+    if (self.usernameField.text.length == 0) {
+        [self showLoginAlert];
+    } else {
         NSString *username = self.usernameField.text;
         NSString *password = self.passwordField.text;
         
@@ -42,28 +44,28 @@
     }
 }
 
--(void)loginAlert{
+- (void)showLoginAlert{
     [super viewDidLoad];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Title"
-                                                                               message:@"Message"
-                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                                                                   message:@"Message"
+                                                            preferredStyle:(UIAlertControllerStyleAlert)];
     
     
     // create a cancel action
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                        style:UIAlertActionStyleCancel
-                                                      handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle cancel response here. Doing nothing will dismiss the view.
-                                                      }];
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+        // handle cancel response here. Doing nothing will dismiss the view.
+    }];
     // add the cancel action to the alertController
     [alert addAction:cancelAction];
-
+    
     // create an OK action
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                     }];
+        // handle response here.
+    }];
     // add the OK action to the alert controller
     [alert addAction:okAction];
     

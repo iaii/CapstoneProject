@@ -5,8 +5,8 @@
 //  Created by Apoorva Chilukuri on 7/14/22.
 //
 
-#import "ActivityRec.h"
+#import "ActivityRecommendation.h"
 
-@implementation ActivityRec
+@implementation ActivityRecommendation
 
 @end

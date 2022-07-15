@@ -10,7 +10,7 @@
 
 #import "ActivityRecViewController.h"
 #import "ActivityTableViewCell.h"
-#import "ActivityRec.h"
+#import "ActivityRecommendation.h"
 
 
 @interface ActivityRecViewController ()
@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -32,14 +32,14 @@
 
 -(void)queryPosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Activities"];
-
+    
     [query includeKey:@"author"]; // This will be changed to includeKey: mood --> that will be detected soon (for now this will be a placeholder)
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
-        NSError * _Nullable error) {
+                                              NSError * _Nullable error) {
         if (objects) {
             self.recActivities = objects;
             [self.tableView reloadData];
-
+            
         } else {
             NSLog(@"%@", error);
         }
@@ -49,18 +49,18 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ActivityTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
     
-//    ActivityRec *rec = self.posts[indexPath.section]; --> will be implemented for next push
-//
-//    cell.post = post;
-//
-//    cell.author.text = post[@"author"][@"username"];
-//    cell.caption.text = post[@"caption"];
-//    cell.likeCount.text = [NSString stringWithFormat:@"%@", post[@"likeCount"]];
-//    cell.commentCount.text = [NSString stringWithFormat:@"%@", post[@"commentCount"]];
-//
-//    cell.image.file = post[@"image"];
-//    [cell.image loadInBackground];
-
+    //    ActivityRec *rec = self.posts[indexPath.section]; --> will be implemented for next push
+    //
+    //    cell.post = post;
+    //
+    //    cell.author.text = post[@"author"][@"username"];
+    //    cell.caption.text = post[@"caption"];
+    //    cell.likeCount.text = [NSString stringWithFormat:@"%@", post[@"likeCount"]];
+    //    cell.commentCount.text = [NSString stringWithFormat:@"%@", post[@"commentCount"]];
+    //
+    //    cell.image.file = post[@"image"];
+    //    [cell.image loadInBackground];
+    
     return cell;
 }
 

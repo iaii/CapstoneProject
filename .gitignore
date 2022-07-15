@@ -2,3 +2,4 @@
 .CapstoneProjectUITests.m
 .CapstoneProjectUITestsLaunchTests.m
 Pods/.gitignore
+Info.plist

@@ -20,19 +20,7 @@
 @implementation SignUpViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)didTapSignUp:(id)sender {
     if([self.usernameField.text isEqual:@""]){
         [self loginAlert];
@@ -41,12 +29,8 @@
         PFUser *newUser = [PFUser user];
         
         // set user properties
-//        newUser.Na = self.usernameField.text;
-//        //newUser.email = self.emailField.text;
-//        newUser.password = self.passwordField.text;
         
         newUser.username = self.usernameField.text;
-        //newUser.email = self.emailField.text;
         newUser.password = self.passwordField.text;
         
         // call sign up function on the object
@@ -65,25 +49,25 @@
 -(void)loginAlert{
     [super viewDidLoad];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Title"
-                                                                               message:@"Message"
-                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                                                                   message:@"Message"
+                                                            preferredStyle:(UIAlertControllerStyleAlert)];
     
     
     // create a cancel action
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                        style:UIAlertActionStyleCancel
-                                                      handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle cancel response here. Doing nothing will dismiss the view.
-                                                      }];
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+        // handle cancel response here. Doing nothing will dismiss the view.
+    }];
     // add the cancel action to the alertController
     [alert addAction:cancelAction];
-
+    
     // create an OK action
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                     }];
+        // handle response here.
+    }];
     // add the OK action to the alert controller
     [alert addAction:okAction];
     
@@ -92,4 +76,5 @@
     }];
     
 }
+
 @end
