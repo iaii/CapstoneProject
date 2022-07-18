@@ -22,11 +22,9 @@
 
 
 - (IBAction)didTapGetActivity:(id)sender {
-    
     MoodDetection *moodDectertor = [[MoodDetection alloc]init];
     
     [moodDectertor detectMood:_userInput.text];
-    
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];

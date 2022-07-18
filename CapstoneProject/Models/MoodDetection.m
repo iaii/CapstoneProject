@@ -15,50 +15,45 @@
 
 @implementation MoodDetection
 
-- (void) initializer{
+- (instancetype)init {
+    if (self = [super init]) {
+        NSArray *sadKeyWords = @[@"sad", @"down", @"terrible", @"depressed"];
+        NSArray *boredKeyWords = @[@"bored", @"ok", @"tired", @"sleepy"];
+        NSArray *happyKeyWords = @[@"happy", @"great", @"esstatic", @"excited"];
+        NSArray *angryKeyWords = @[@"angry", @"mad", @"upset"];
+        
+        
+        self.stopWordsForMoods =  @{sadKeyWords: @"sad", boredKeyWords: @"bored", happyKeyWords: @"happy", angryKeyWords: @"angry"};
+        
+        self.moodCount = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                          @0, @"sad",
+                          @0, @"bored",
+                          @0, @"happy",
+                          @0, @"angry",
+                          nil];
+    }
     
-    NSArray *sadKeyWords = @[@"sad", @"down", @"terrible", @"depressed"];
-    NSArray *boredKeyWords = @[@"bored", @"ok", @"tired", @"sleepy"];
-    NSArray *happyKeyWords = @[@"happy", @"great", @"esstatic", @"excited"];
-    NSArray *angryKeyWords = @[@"angry", @"mad", @"upset"];
-    
-    
-    self.stopWordsForMoods = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  sadKeyWords,    @"sad",
-                              boredKeyWords,  @"bored",
-                              happyKeyWords, @"happy",
-                              angryKeyWords, @"angry",
-                              nil
-    ];
-    
-    self.moodCount = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                      [NSNumber numberWithInt:0], @"sad",
-                      [NSNumber numberWithInt:0], @"bored",
-                      [NSNumber numberWithInt:0], @"happy",
-                      [NSNumber numberWithInt:0], @"angry",
-                      nil];
+    return self;
 }
 
-- (NSString *) detectMood:(NSString *) userText{
+- (NSString *)detectMood:(NSString *)userText{
     
-    [self initializer];
-    
-    NSArray * userTextWords = [userText componentsSeparatedByString:@" "];
+    NSArray *userTextWords = [userText componentsSeparatedByString:@" "];
     
     // counts how many times a key word/ associated word comes up
     
-    for(int i = 0; i < userTextWords.count; i++){
-        if([[userTextWords objectAtIndex:i] isEqual:[_stopWordsForMoods objectForKey:@"sad"]]) {
-            NSNumber *sadCountIncremented = [NSNumber numberWithInt:[[_moodCount objectForKey:@"sad"] intValue] + 1];
+    for (NSString *userTextWord in userTextWords) {
+        if ([userTextWord isEqual:_stopWordsForMoods[@"sad"]]) {
+            NSNumber *sadCountIncremented = @([_moodCount[@"sad"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"sad"];
-        }else if([[userTextWords objectAtIndex:i] isEqual:[_stopWordsForMoods objectForKey:@"bored"]]) {
-            NSNumber *sadCountIncremented = [NSNumber numberWithInt:[[_moodCount objectForKey:@"bored"] intValue] + 1];
+        }else if ([userTextWord isEqual:_stopWordsForMoods[@"bored"]]) {
+            NSNumber *sadCountIncremented = @([_moodCount[@"bored"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"bored"];
-        }else   if([[userTextWords objectAtIndex:i] isEqual:[_stopWordsForMoods objectForKey:@"happy"]]) {
-            NSNumber *sadCountIncremented = [NSNumber numberWithInt:[[_moodCount objectForKey:@"happy"] intValue] + 1];
+        }else if ([userTextWord isEqual:_stopWordsForMoods[@"happy"]]) {
+            NSNumber *sadCountIncremented = @([_moodCount[@"happy"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"happy"];
-        }else if([[userTextWords objectAtIndex:i] isEqual:[_stopWordsForMoods objectForKey:@"angry"]]) {
-            NSNumber *sadCountIncremented = [NSNumber numberWithInt:[[_moodCount objectForKey:@"angry"] intValue] + 1];
+        }else if ([userTextWord isEqual:_stopWordsForMoods[@"angry"]]) {
+            NSNumber *sadCountIncremented = @([_moodCount[@"angry"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"angry"];
         }
     }
