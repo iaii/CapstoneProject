@@ -5,16 +5,16 @@
 //  Created by Apoorva Chilukuri on 7/11/22.
 //
 
-#import "HomeViewController.h"
+#import "AXHomeViewController.h"
 #import <Parse/Parse.h>
 #import "MoodDetection.h"
 
-@interface HomeViewController ()
+@interface AXHomeViewController ()
 - (IBAction)didTapLogout:(id)sender;
 
 @end
 
-@implementation HomeViewController
+@implementation AXHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,5 +35,9 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
 }
 @end

@@ -27,7 +27,7 @@
 		F5D031BF287C8F530065FDF3 /* CapstoneProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031BE287C8F530065FDF3 /* CapstoneProjectUITests.m */; };
 		F5D031C1287C8F530065FDF3 /* CapstoneProjectUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031C0287C8F530065FDF3 /* CapstoneProjectUITestsLaunchTests.m */; };
 		F5D031CF287C9A6B0065FDF3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031CE287C9A6B0065FDF3 /* LoginViewController.m */; };
-		F5D031D2287C9D270065FDF3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031D1287C9D270065FDF3 /* HomeViewController.m */; };
+		F5D031D2287C9D270065FDF3 /* AXHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031D1287C9D270065FDF3 /* AXHomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +86,8 @@
 		F5D031C0287C8F530065FDF3 /* CapstoneProjectUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapstoneProjectUITestsLaunchTests.m; sourceTree = "<group>"; };
 		F5D031CD287C9A6B0065FDF3 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F5D031CE287C9A6B0065FDF3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		F5D031D0287C9D270065FDF3 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		F5D031D1287C9D270065FDF3 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		F5D031D0287C9D270065FDF3 /* AXHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXHomeViewController.h; sourceTree = "<group>"; };
+		F5D031D1287C9D270065FDF3 /* AXHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXHomeViewController.m; sourceTree = "<group>"; };
 		F6472ECC89E77248B87604AC /* Pods-CapstoneProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.debug.xcconfig"; sourceTree = "<group>"; };
 		FA8B93BEB286AB9F3D1316F3 /* Pods_CapstoneProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,8 +154,8 @@
 				F576C0DD287F46E300C93523 /* ActivityRecViewController.m */,
 				F576C0E82880E76100C93523 /* CustomeActivityViewController.h */,
 				F576C0E92880E76100C93523 /* CustomeActivityViewController.m */,
-				F5D031D0287C9D270065FDF3 /* HomeViewController.h */,
-				F5D031D1287C9D270065FDF3 /* HomeViewController.m */,
+				F5D031D0287C9D270065FDF3 /* AXHomeViewController.h */,
+				F5D031D1287C9D270065FDF3 /* AXHomeViewController.m */,
 				F5D031CD287C9A6B0065FDF3 /* LoginViewController.h */,
 				F5D031CE287C9A6B0065FDF3 /* LoginViewController.m */,
 			);
@@ -448,7 +448,7 @@
 				F576C0DE287F46E300C93523 /* ActivityRecViewController.m in Sources */,
 				F576C0EA2880E76100C93523 /* CustomeActivityViewController.m in Sources */,
 				F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */,
-				F5D031D2287C9D270065FDF3 /* HomeViewController.m in Sources */,
+				F5D031D2287C9D270065FDF3 /* AXHomeViewController.m in Sources */,
 				F5D031CF287C9A6B0065FDF3 /* LoginViewController.m in Sources */,
 				F576C0F62882197100C93523 /* MoodDetection.m in Sources */,
 				F576C0ED2880EFFA00C93523 /* DisplayActivityViewController.m in Sources */,

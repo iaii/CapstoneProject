@@ -10,6 +10,8 @@
 @interface MoodDetection ()
 
 @property (strong, nonatomic) NSMutableArray *userTextWords;
+@property (strong, nonatomic) NSString *mood;
+
 
 @end
 
@@ -23,54 +25,65 @@
         NSArray *angryKeyWords = @[@"angry", @"mad", @"upset"];
         
         
-        self.stopWordsForMoods =  @{sadKeyWords: @"sad", boredKeyWords: @"bored", happyKeyWords: @"happy", angryKeyWords: @"angry"};
+        self.stopWordsForMoods =  @{@"sad": sadKeyWords, @"bored": boredKeyWords, @"happy": happyKeyWords, @"angry": angryKeyWords};
         
         self.moodCount = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                          @0, @"sad",
-                          @0, @"bored",
-                          @0, @"happy",
-                          @0, @"angry",
+                          @"sad", @0,
+                          @"bored", @0,
+                          @"happy", @0,
+                          @"angry", @0,
                           nil];
     }
     
     return self;
 }
 
-- (NSString *)detectMood:(NSString *)userText{
+- (void)detectMood:(NSString *)userText{
     
     NSArray *userTextWords = [userText componentsSeparatedByString:@" "];
     
     // counts how many times a key word/ associated word comes up
     
     for (NSString *userTextWord in userTextWords) {
-        if ([userTextWord isEqual:_stopWordsForMoods[@"sad"]]) {
+        if ([_stopWordsForMoods[@"sad"] containsObject: userTextWord.lowercaseString]) {
+            NSLog(@"sad");
+
             NSNumber *sadCountIncremented = @([_moodCount[@"sad"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"sad"];
-        }else if ([userTextWord isEqual:_stopWordsForMoods[@"bored"]]) {
+        }else if ([_stopWordsForMoods[@"bored"] containsObject: userTextWord.lowercaseString]) {
+            NSLog(@"bored");
             NSNumber *sadCountIncremented = @([_moodCount[@"bored"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"bored"];
-        }else if ([userTextWord isEqual:_stopWordsForMoods[@"happy"]]) {
+        }else if ([_stopWordsForMoods[@"happy"] containsObject: userTextWord.lowercaseString]) {
+            NSLog(@"happy");
+
             NSNumber *sadCountIncremented = @([_moodCount[@"happy"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"happy"];
-        }else if ([userTextWord isEqual:_stopWordsForMoods[@"angry"]]) {
+        }else if ([_stopWordsForMoods[@"angry"] containsObject: userTextWord.lowercaseString]) {
+            NSLog(@"angry");
+
             NSNumber *sadCountIncremented = @([_moodCount[@"angry"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"angry"];
         }
+        NSLog(@"yes");
     }
     
     // compares which mood
     
-    NSString *returnMood = @"angry";
+    _mood = @"angry";
     
     if([_moodCount objectForKey:@"happy"] >= [_moodCount objectForKey:@"sad"] && [_moodCount objectForKey:@"happy"] >= [_moodCount objectForKey:@"bored"] && [_moodCount objectForKey:@"happy"] >= [_moodCount objectForKey:@"angry"]) {
-        returnMood = @"happy";
+        _mood = @"happy";
     }else if([_moodCount objectForKey:@"sad"] >= [_moodCount objectForKey:@"happy"] && [_moodCount objectForKey:@"sad"] >= [_moodCount objectForKey:@"bored"] && [_moodCount objectForKey:@"sad"] >= [_moodCount objectForKey:@"angry"]) {
-        returnMood = @"sad";
+        _mood = @"sad";
     }else if([_moodCount objectForKey:@"bored"] >= [_moodCount objectForKey:@"sad"] && [_moodCount objectForKey:@"bored"] >= [_moodCount objectForKey:@"happy"] && [_moodCount objectForKey:@"bored"] >= [_moodCount objectForKey:@"angry"]) {
-        returnMood = @"bored";
+        _mood = @"bored";
     }
-    
-    return returnMood;
+}
+
+
+- (NSString *)getMood {
+    return _mood.lowercaseString;
 }
 
 

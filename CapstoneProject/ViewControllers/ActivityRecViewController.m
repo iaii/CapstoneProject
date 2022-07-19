@@ -6,16 +6,15 @@
 //
 
 #import "ActivityRecViewController.h"
-#import <Parse/Parse.h>
-
-#import "ActivityRecViewController.h"
 #import "ActivityTableViewCell.h"
 #import "ActivityRecommendation.h"
-
+#import "MoodDetection.h"
+#import <Parse/Parse.h>
 
 @interface ActivityRecViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)didTapChooseCustomeAct:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *activityRecommendationText;
 
 @end
 
@@ -30,10 +29,15 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
--(void)queryPosts {
+-(void)queryActivities {
     PFQuery *query = [PFQuery queryWithClassName:@"Activities"];
     
-    [query includeKey:@"author"]; // This will be changed to includeKey: mood --> that will be detected soon (for now this will be a placeholder)
+    MoodDetection *moodDectertor = [[MoodDetection alloc]init];
+    
+    NSString *mood = [moodDectertor getMood];
+    
+    [query includeKey:mood];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
                                               NSError * _Nullable error) {
         if (objects) {

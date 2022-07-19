@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSDictionary *stopWordsForMoods;
 @property (strong, nonatomic) NSMutableDictionary *moodCount;
 
-- (NSString *) detectMood:(NSString *) userText;
+- (void) detectMood:(NSString *) userText;
+- (NSString *)getMood;
 
 @end
 

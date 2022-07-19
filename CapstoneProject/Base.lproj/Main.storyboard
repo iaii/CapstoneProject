@@ -154,7 +154,7 @@
         <!--Home View Controller-->
         <scene sceneID="DGs-WS-oDC">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="M9C-cy-wbF" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="M9C-cy-wbF" customClass="AXHomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2oF-CP-4Ms">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,6 +232,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mnp-G8-oxK" id="dd3-ap-pNr">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caw-Ze-WwA">
+                                                    <rect key="frame" x="20" y="11" width="57" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -252,6 +261,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Y6A-cN-4bU"/>
                     <connections>
+                        <outlet property="activityRecommendationText" destination="caw-Ze-WwA" id="kPq-S1-zac"/>
                         <outlet property="tableView" destination="EwG-uU-E1W" id="XqX-xi-gRl"/>
                     </connections>
                 </viewController>
@@ -315,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="3347.826086956522" y="103.79464285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Display Activity View Controller-->
         <scene sceneID="wTd-Gr-9fg">
             <objects>
-                <viewController id="92g-BU-Jx5" sceneMemberID="viewController">
+                <viewController id="92g-BU-Jx5" customClass="DisplayActivityViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="24r-yO-qB0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,7 +341,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Activity ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6q-Aj-ALM">
-                                <rect key="frame" x="20" y="111" width="374" height="21"/>
+                                <rect key="frame" x="20" y="225" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-HK-2Na">
+                                <rect key="frame" x="20" y="142" width="374" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -341,6 +358,10 @@
                         <viewLayoutGuide key="safeArea" id="zca-bo-nPD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="displayActivityText" destination="a6q-Aj-ALM" id="iuV-q5-Kos"/>
+                        <outlet property="moodText" destination="tXh-HK-2Na" id="Vis-VD-sUo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IxJ-AZ-iae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

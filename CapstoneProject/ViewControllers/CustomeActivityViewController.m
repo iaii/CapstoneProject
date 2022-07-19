@@ -23,7 +23,7 @@
     self.moodPicker.dataSource = self;
     self.moodPicker.delegate = self;
     
-    self.moodsToChooseFrom = @[@"Happy", @"Sad", @"Mad"];
+    self.moodsToChooseFrom = @[@"Happy", @"Sad", @"Angry", @"Bored"];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
