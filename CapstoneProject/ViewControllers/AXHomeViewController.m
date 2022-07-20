@@ -8,6 +8,7 @@
 #import "AXHomeViewController.h"
 #import <Parse/Parse.h>
 #import "MoodDetection.h"
+#import "ActivityRecViewController.h"
 
 @interface AXHomeViewController ()
 - (IBAction)didTapLogout:(id)sender;
@@ -27,7 +28,9 @@
     [moodDectertor detectMood:_userInput.text];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];
+    ActivityRecViewController *activityRecViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];
+    activityRecViewController.moodDectetor = moodDectertor;
+    self.view.window.rootViewController = activityRecViewController;
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -37,7 +40,4 @@
     }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
 @end

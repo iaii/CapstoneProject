@@ -5,17 +5,19 @@
 //  Created by Apoorva Chilukuri on 7/14/22.
 //
 
-#import "CustomeActivityViewController.h"
+#import "AddActivityViewController.h"
+#import "ActivityRecommendation.h"
 
-@interface CustomeActivityViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface AddActivityViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextView *costumeAcitvityInput;
 @property (weak, nonatomic) IBOutlet UIPickerView *moodPicker;
 @property (strong, nonatomic) NSArray *moodsToChooseFrom;
 @property (strong, nonatomic) NSString *chosenMood;
+- (IBAction)didTapAddActivity:(id)sender;
 
 @end
 
-@implementation CustomeActivityViewController
+@implementation AddActivityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,4 +43,19 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.chosenMood = self.moodsToChooseFrom[row];
 }
+
+- (IBAction)didTapAddActivity:(id)sender {
+    
+    if(![self.chosenMood isEqualToString:@""] && ![self.costumeAcitvityInput.text isEqualToString:@""]){
+        [ActivityRecommendation postNewActivity: self.costumeAcitvityInput.text withMood: self.chosenMood withCompletion: ^(BOOL succeeded, NSError * _Nullable error) {
+            if(error){
+                NSLog(@"%@", error);
+            }else{
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"DisplayActivityViewController"];
+            }
+        }];
+    }
+}
+
 @end

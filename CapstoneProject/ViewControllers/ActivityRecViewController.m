@@ -6,15 +6,16 @@
 //
 
 #import "ActivityRecViewController.h"
-#import "ActivityTableViewCell.h"
+#import "ActivityRecommendationTableViewCell.h"
 #import "ActivityRecommendation.h"
 #import "MoodDetection.h"
 #import <Parse/Parse.h>
 
 @interface ActivityRecViewController ()
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSString *mood;
 - (IBAction)didTapChooseCustomeAct:(id)sender;
-@property (weak, nonatomic) IBOutlet UILabel *activityRecommendationText;
 
 @end
 
@@ -27,16 +28,15 @@
     self.tableView.dataSource = self;
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    [self queryActivities];
 }
 
 -(void)queryActivities {
-    PFQuery *query = [PFQuery queryWithClassName:@"Activities"];
+    PFQuery *query = [ActivityRecommendation query];
+    _mood = [self.moodDectetor mood];
     
-    MoodDetection *moodDectertor = [[MoodDetection alloc]init];
-    
-    NSString *mood = [moodDectertor getMood];
-    
-    [query includeKey:mood];
+    [query whereKey:@"EmotionTag" equalTo:_mood];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
                                               NSError * _Nullable error) {
@@ -51,33 +51,23 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ActivityTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
+    ActivityRecommendationTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
     
-    //    ActivityRec *rec = self.posts[indexPath.section]; --> will be implemented for next push
-    //
-    //    cell.post = post;
-    //
-    //    cell.author.text = post[@"author"][@"username"];
-    //    cell.caption.text = post[@"caption"];
-    //    cell.likeCount.text = [NSString stringWithFormat:@"%@", post[@"likeCount"]];
-    //    cell.commentCount.text = [NSString stringWithFormat:@"%@", post[@"commentCount"]];
-    //
-    //    cell.image.file = post[@"image"];
-    //    [cell.image loadInBackground];
-    
+    [cell setUpActivity:_recActivities[indexPath.row]];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _recActivities.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 1;
 }
 
 - (IBAction)didTapChooseCustomeAct:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"CustomeActivityViewController"];
 }
+
 @end

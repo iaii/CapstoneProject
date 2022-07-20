@@ -21,11 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MoodDetection *moodDectertor = [[MoodDetection alloc]init];
-    
-    _moodDetected = [moodDectertor getMood];
+    MoodDetection *moodDectertor = [[MoodDetection alloc] init];
+    _moodDetected = [moodDectertor mood];
     _moodText.text = _moodDetected;
-
+    
 }
 
 -(void)queryPosts {

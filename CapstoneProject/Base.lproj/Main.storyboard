@@ -166,11 +166,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AoO-hP-Je3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Happy and excited" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AoO-hP-Je3">
                                 <rect key="frame" x="20" y="129" width="374" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Type out your thoughts? What were the highlights? What were somethings that didn't go as planned? What has been on your mind lately?</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -226,7 +225,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" id="Mnp-G8-oxK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" id="Mnp-G8-oxK" customClass="ActivityRecommendationTableViewCell">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mnp-G8-oxK" id="dd3-ap-pNr">
@@ -234,7 +233,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caw-Ze-WwA">
-                                                    <rect key="frame" x="20" y="11" width="57" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="354" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -242,6 +241,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activityRecommendationText" destination="caw-Ze-WwA" id="SXR-aO-PON"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -261,7 +263,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Y6A-cN-4bU"/>
                     <connections>
-                        <outlet property="activityRecommendationText" destination="caw-Ze-WwA" id="kPq-S1-zac"/>
                         <outlet property="tableView" destination="EwG-uU-E1W" id="XqX-xi-gRl"/>
                     </connections>
                 </viewController>
@@ -269,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="2479.7101449275365" y="103.79464285714285"/>
         </scene>
-        <!--Custome Activity View Controller-->
+        <!--Add Activity View Controller-->
         <scene sceneID="kQY-fE-MCg">
             <objects>
-                <viewController storyboardIdentifier="CustomeActivityViewController" id="20E-BK-nJF" customClass="CustomeActivityViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomeActivityViewController" id="20E-BK-nJF" customClass="AddActivityViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AFg-AB-2xF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,6 +310,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add activity"/>
                                 <connections>
+                                    <action selector="didTapAddActivity:" destination="20E-BK-nJF" eventType="touchUpInside" id="DeW-xD-AVz"/>
                                     <segue destination="92g-BU-Jx5" kind="presentation" id="NW2-4d-n4L"/>
                                 </connections>
                             </button>
@@ -328,7 +330,7 @@
         <!--Display Activity View Controller-->
         <scene sceneID="wTd-Gr-9fg">
             <objects>
-                <viewController id="92g-BU-Jx5" customClass="DisplayActivityViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DisplayActivityViewController" id="92g-BU-Jx5" customClass="DisplayActivityViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="24r-yO-qB0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

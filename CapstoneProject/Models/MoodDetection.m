@@ -10,8 +10,6 @@
 @interface MoodDetection ()
 
 @property (strong, nonatomic) NSMutableArray *userTextWords;
-@property (strong, nonatomic) NSString *mood;
-
 
 @end
 
@@ -38,7 +36,7 @@
     return self;
 }
 
-- (void)detectMood:(NSString *)userText{
+- (void)detectMood:(NSString *)userText {
     
     NSArray *userTextWords = [userText componentsSeparatedByString:@" "];
     
@@ -46,26 +44,18 @@
     
     for (NSString *userTextWord in userTextWords) {
         if ([_stopWordsForMoods[@"sad"] containsObject: userTextWord.lowercaseString]) {
-            NSLog(@"sad");
-
             NSNumber *sadCountIncremented = @([_moodCount[@"sad"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"sad"];
         }else if ([_stopWordsForMoods[@"bored"] containsObject: userTextWord.lowercaseString]) {
-            NSLog(@"bored");
             NSNumber *sadCountIncremented = @([_moodCount[@"bored"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"bored"];
         }else if ([_stopWordsForMoods[@"happy"] containsObject: userTextWord.lowercaseString]) {
-            NSLog(@"happy");
-
             NSNumber *sadCountIncremented = @([_moodCount[@"happy"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"happy"];
         }else if ([_stopWordsForMoods[@"angry"] containsObject: userTextWord.lowercaseString]) {
-            NSLog(@"angry");
-
             NSNumber *sadCountIncremented = @([_moodCount[@"angry"] intValue] + 1);
             [_moodCount setObject:sadCountIncremented forKey: @"angry"];
         }
-        NSLog(@"yes");
     }
     
     // compares which mood
@@ -80,11 +70,5 @@
         _mood = @"bored";
     }
 }
-
-
-- (NSString *)getMood {
-    return _mood.lowercaseString;
-}
-
 
 @end
