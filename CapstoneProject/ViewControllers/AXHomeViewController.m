@@ -5,16 +5,17 @@
 //  Created by Apoorva Chilukuri on 7/11/22.
 //
 
-#import "HomeViewController.h"
+#import "AXHomeViewController.h"
 #import <Parse/Parse.h>
 #import "MoodDetection.h"
+#import "ActivityRecViewController.h"
 
-@interface HomeViewController ()
+@interface AXHomeViewController ()
 - (IBAction)didTapLogout:(id)sender;
 
 @end
 
-@implementation HomeViewController
+@implementation AXHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,7 +28,9 @@
     [moodDectertor detectMood:_userInput.text];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];
+    ActivityRecViewController *activityRecViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];
+    activityRecViewController.moodDectetor = moodDectertor;
+    self.view.window.rootViewController = activityRecViewController;
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -36,4 +39,5 @@
         self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     }];
 }
+
 @end

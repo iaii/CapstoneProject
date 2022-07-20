@@ -6,10 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ActivityRecommendation : NSObject
+@interface ActivityRecommendation: PFObject <PFSubclassing>
+
+@property (strong, nonatomic) NSString *Activity;
+@property (strong, nonatomic) NSString *EmotionTag;
+
++ (void) postNewActivity: (NSString * _Nullable )activity withMood: (NSString * _Nullable )mood withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

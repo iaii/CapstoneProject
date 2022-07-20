@@ -29,7 +29,6 @@
         PFUser *newUser = [PFUser user];
         
         // set user properties
-        
         newUser.username = self.usernameField.text;
         newUser.password = self.passwordField.text;
         
