@@ -15,9 +15,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) ActivityRecommendation *acitivityRecommendation;
 @property (weak, nonatomic) IBOutlet UILabel *activityRecommendationText;
+@property (nonatomic) BOOL like;
+@property (nonatomic) BOOL dislike;
+@property (strong, nonatomic) NSString *activity;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
 
-- (void)setUpActivity:(ActivityRecommendation *) activityRecommendation;
-    
+- (IBAction)didTapLikeButton:(id)sender;
+- (IBAction)didTapDislikeButton:(id)sender;
+- (IBAction)didTapSelectActivity:(id)sender;
+
+- (void)setUpActivity:(NSString *) activity;
+
 @end
 
 NS_ASSUME_NONNULL_END

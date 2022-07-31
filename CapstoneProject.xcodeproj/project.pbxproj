@@ -17,6 +17,7 @@
 		F576C0F32880F2AC00C93523 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0F22880F2AC00C93523 /* SignUpViewController.m */; };
 		F576C0F62882197100C93523 /* MoodDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0F52882197100C93523 /* MoodDetection.m */; };
 		F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */; };
+		F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */; };
 		F5D0319A287C8F520065FDF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D03199287C8F520065FDF3 /* AppDelegate.m */; };
 		F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0319C287C8F520065FDF3 /* SceneDelegate.m */; };
 		F5D031A3287C8F520065FDF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D031A1287C8F520065FDF3 /* Main.storyboard */; };
@@ -69,6 +70,8 @@
 		F576C0F52882197100C93523 /* MoodDetection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoodDetection.m; sourceTree = "<group>"; };
 		F576C0FA288731A100C93523 /* ActivityRecommendationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityRecommendationTableViewCell.h; sourceTree = "<group>"; };
 		F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityRecommendationTableViewCell.m; sourceTree = "<group>"; };
+		F576C0FD289442A700C93523 /* ChangeEmotionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeEmotionViewController.h; sourceTree = "<group>"; };
+		F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeEmotionViewController.m; sourceTree = "<group>"; };
 		F5D03195287C8F520065FDF3 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D03198287C8F520065FDF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F5D03199287C8F520065FDF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 		F576C0EF2880F1B000C93523 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F576C0FD289442A700C93523 /* ChangeEmotionViewController.h */,
+				F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */,
 				F576C0EB2880EFFA00C93523 /* DisplayActivityViewController.h */,
 				F576C0EC2880EFFA00C93523 /* DisplayActivityViewController.m */,
 				F576C0F12880F2AC00C93523 /* SignUpViewController.h */,
@@ -447,6 +452,7 @@
 				F576C0DE287F46E300C93523 /* ActivityRecViewController.m in Sources */,
 				F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */,
 				F576C0EA2880E76100C93523 /* AddActivityViewController.m in Sources */,
+				F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */,
 				F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */,
 				F5D031D2287C9D270065FDF3 /* AXHomeViewController.m in Sources */,
 				F5D031CF287C9A6B0065FDF3 /* LoginViewController.m in Sources */,
@@ -627,6 +633,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 987FLBMUYL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CapstoneProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -654,6 +661,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 987FLBMUYL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CapstoneProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

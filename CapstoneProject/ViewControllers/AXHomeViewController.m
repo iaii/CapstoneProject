@@ -7,6 +7,7 @@
 
 #import "AXHomeViewController.h"
 #import <Parse/Parse.h>
+#include <stdlib.h>
 #import "MoodDetection.h"
 #import "ActivityRecViewController.h"
 
@@ -20,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
 
 - (IBAction)didTapGetActivity:(id)sender {
     MoodDetection *moodDectertor = [[MoodDetection alloc]init];

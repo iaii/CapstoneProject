@@ -10,64 +10,57 @@
 @interface MoodDetection ()
 
 @property (strong, nonatomic) NSMutableArray *userTextWords;
+@property (strong, nonatomic) NSDictionary *moodAPIResponse;
 
 @end
 
 @implementation MoodDetection
 
-- (instancetype)init {
-    if (self = [super init]) {
-        NSArray *sadKeyWords = @[@"sad", @"down", @"terrible", @"depressed"];
-        NSArray *boredKeyWords = @[@"bored", @"ok", @"tired", @"sleepy"];
-        NSArray *happyKeyWords = @[@"happy", @"great", @"esstatic", @"excited"];
-        NSArray *angryKeyWords = @[@"angry", @"mad", @"upset"];
-        
-        
-        self.stopWordsForMoods =  @{@"sad": sadKeyWords, @"bored": boredKeyWords, @"happy": happyKeyWords, @"angry": angryKeyWords};
-        
-        self.moodCount = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                          @"sad", @0,
-                          @"bored", @0,
-                          @"happy", @0,
-                          @"angry", @0,
-                          nil];
-    }
-    
-    return self;
-}
-
 - (void)detectMood:(NSString *)userText {
     
-    NSArray *userTextWords = [userText componentsSeparatedByString:@" "];
-    
-    // counts how many times a key word/ associated word comes up
-    
-    for (NSString *userTextWord in userTextWords) {
-        if ([_stopWordsForMoods[@"sad"] containsObject: userTextWord.lowercaseString]) {
-            NSNumber *sadCountIncremented = @([_moodCount[@"sad"] intValue] + 1);
-            [_moodCount setObject:sadCountIncremented forKey: @"sad"];
-        }else if ([_stopWordsForMoods[@"bored"] containsObject: userTextWord.lowercaseString]) {
-            NSNumber *sadCountIncremented = @([_moodCount[@"bored"] intValue] + 1);
-            [_moodCount setObject:sadCountIncremented forKey: @"bored"];
-        }else if ([_stopWordsForMoods[@"happy"] containsObject: userTextWord.lowercaseString]) {
-            NSNumber *sadCountIncremented = @([_moodCount[@"happy"] intValue] + 1);
-            [_moodCount setObject:sadCountIncremented forKey: @"happy"];
-        }else if ([_stopWordsForMoods[@"angry"] containsObject: userTextWord.lowercaseString]) {
-            NSNumber *sadCountIncremented = @([_moodCount[@"angry"] intValue] + 1);
-            [_moodCount setObject:sadCountIncremented forKey: @"angry"];
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.apilayer.com/text_to_emotion"]];
+
+    // Specify that it will be a POST request
+    [request setHTTPMethod:@"POST"];
+
+    // sets the header fields
+    [request setValue:@"Dh9vQhEuwQ8QSnCu1KBkLRQZhi7Qkbyu" forHTTPHeaderField:@"apikey"];
+
+    NSData *requestBodyData = [userText dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:requestBodyData];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if(httpResponse.statusCode == 200) {
+            NSError *parseError = nil;
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+            NSLog(@"The response is - %@",responseDictionary);
+            NSInteger success = [[responseDictionary objectForKey:@"success"] integerValue];
+            if(success == 1) {
+                NSLog(@"Login SUCCESS");
+                self.moodAPIResponse = responseDictionary;
+            } else {
+                NSLog(@"Login FAILURE");
+            }
+        } else {
+            NSLog(@"Error");
         }
-    }
+    }];
+
+    [dataTask resume];
     
-    // compares which mood
-    
-    _mood = @"angry";
-    
-    if([_moodCount objectForKey:@"happy"] >= [_moodCount objectForKey:@"sad"] && [_moodCount objectForKey:@"happy"] >= [_moodCount objectForKey:@"bored"] && [_moodCount objectForKey:@"happy"] >= [_moodCount objectForKey:@"angry"]) {
-        _mood = @"happy";
-    }else if([_moodCount objectForKey:@"sad"] >= [_moodCount objectForKey:@"happy"] && [_moodCount objectForKey:@"sad"] >= [_moodCount objectForKey:@"bored"] && [_moodCount objectForKey:@"sad"] >= [_moodCount objectForKey:@"angry"]) {
-        _mood = @"sad";
-    }else if([_moodCount objectForKey:@"bored"] >= [_moodCount objectForKey:@"sad"] && [_moodCount objectForKey:@"bored"] >= [_moodCount objectForKey:@"happy"] && [_moodCount objectForKey:@"bored"] >= [_moodCount objectForKey:@"angry"]) {
-        _mood = @"bored";
+    // figures out the users mood based on what the api returns
+
+    _mood = @"Sad";
+    int highestMoodCount = 0;
+
+    for(id key in self.moodAPIResponse){
+        if([self.moodAPIResponse[key] intValue] > highestMoodCount){
+            _mood = key;
+            highestMoodCount = [[_moodAPIResponse objectForKey:key] intValue];
+        }
     }
 }
 

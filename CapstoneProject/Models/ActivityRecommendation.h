@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ActivityRecommendation: PFObject <PFSubclassing>
 
-@property (strong, nonatomic) NSString *Activity;
-@property (strong, nonatomic) NSString *EmotionTag;
+@property (strong, nonatomic) NSString *activity;
+@property (strong, nonatomic) NSString *mood;
 
 + (void) postNewActivity: (NSString * _Nullable )activity withMood: (NSString * _Nullable )mood withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
