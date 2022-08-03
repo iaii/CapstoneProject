@@ -30,7 +30,9 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ActivityRecViewController *activityRecViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];
     activityRecViewController.moodDectetor = moodDectertor;
-    self.view.window.rootViewController = activityRecViewController;
+    
+    [self.navigationController pushViewController:activityRecViewController animated:YES];
+    //self.view.window.rootViewController = activityRecViewController;
 }
 
 - (IBAction)didTapLogout:(id)sender {

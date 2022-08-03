@@ -30,6 +30,7 @@
     self.activity.text = self.activityName;
     
     self.moodsToChooseFrom = @[@"Happy", @"Sad", @"Angry", @"Fear", @"Surprise"];
+    self.chosenMood = self.moodsToChooseFrom[0];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -50,8 +51,9 @@
 
 - (IBAction)didTapChangeEmotionButton:(id)sender {
     [self changeFirstEmotionInDatabase];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)changeFirstEmotionInDatabase {
@@ -60,7 +62,7 @@
   //   Retrieve the object by id
     [query getObjectInBackgroundWithId:self.activityObjectId block:^(PFObject *activities, NSError *error) {
 
-//        activities[@"firstEmotionTag"] = self.chosenMood;
+        activities[@"firstEmotionTag"] = self.chosenMood;
 //        activities.f
 //
         [activities saveInBackground];

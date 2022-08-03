@@ -10,6 +10,7 @@
 #import "ActivityRecommendation.h"
 #import "MoodDetection.h"
 #import "ChangeEmotionViewController.h"
+#import "RaindropsUIImageView.h"
 
 #import <Parse/Parse.h>
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *mood;
 @property (weak, nonatomic) IBOutlet UILabel *headingText;
+@property (strong, nonatomic) NSMutableArray *rainDropsArray;
 - (IBAction)didTapChangeEmotion:(id)sender;
 - (IBAction)didTapAddAcitivity:(id)sender;
 - (IBAction)didTapSelectActivity:(id)sender;
@@ -78,34 +80,142 @@
 }
 
 -(void)sadAnimation {
+    
+//    UITapGestureRecognizer *singleFingerTap =
+//      [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                              action:@selector(handleSingleTap:)];
+//    [self.view addGestureRecognizer:singleFingerTap];
+    
+    self.rainDropsArray = [[NSMutableArray alloc] init];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+   // [tapRecognizer setNumberOfTapsRequired:1];
+    [tapRecognizer setDelegate:self];
+
     for(int i = 0; i < 15; i++){
-        UIImageView *sadImage = [[UIImageView alloc] init];
-        
+        RaindropsUIImageView *sadImage = [[RaindropsUIImageView alloc] init];
         CGRect imageframe = sadImage.frame;
         
+        sadImage.userInteractionEnabled = YES;
+        
+        [sadImage addGestureRecognizer:tapRecognizer];
+
         int size = ((int)arc4random_uniform(100) + 25);
         imageframe.size.height = size;
         imageframe.size.width = size;
+        //imageframe.origin = CGPointMake(200, 200);
         imageframe.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         sadImage.frame = imageframe;
         [sadImage setImage:[UIImage imageNamed:@"rain"]];
         [self.view addSubview:sadImage];
         sadImage.layer.zPosition = MAXFLOAT;
-        
+
         CABasicAnimation *animation = [CABasicAnimation animation];
         animation.keyPath = @"position.y";
-        animation.fromValue = @77;
-        animation.toValue = @455;
-        animation.duration = (int)arc4random_uniform(3) + 1;
+        animation.fromValue = @0;
+        animation.toValue = @700;
+        animation.duration = 5; //(int)arc4random_uniform(3) + 1;
 
-        animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5:0:0.9:0.7];
+        animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5:0.35:0.55:0.3];
+
+        animation.beginTime = CACurrentMediaTime() + (int)arc4random_uniform(5);
+
+        sadImage.animationRepeatCount = 1; // loops only once
 
         [sadImage.layer addAnimation:animation forKey:@"basic"];
 
         sadImage.layer.position = CGPointMake((int)arc4random_uniform(500), 0);
 
+        CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        flash.fromValue = [NSNumber numberWithFloat:1.0];
+        flash.toValue = [NSNumber numberWithFloat:0.0];
+        flash.duration = 7;        // 1 second
+        flash.autoreverses = YES;    // Back
+       // flash.repeatCount = 3;       // Or whatever
+
+        [sadImage.layer addAnimation:flash forKey:@"flashAnimation"];
+
+        
+        NSMutableArray *rainDropImageAndStatus = [[NSMutableArray alloc] init];
+        [rainDropImageAndStatus addObject:sadImage];
+        [rainDropImageAndStatus addObject:@0];
+        
+        [self.rainDropsArray addObject:rainDropImageAndStatus];
     }
 }
+
+-(void)tapped:(UITapGestureRecognizer *) gesture {
+    for (int i = 0; i < self.rainDropsArray.count; i++) {
+        NSArray *currentItem = self.rainDropsArray[i];
+        UIImageView *currentImage = currentItem[0];
+        
+       // [(RootViewController*)currentImage.superview touches began method];
+
+//        CGPoint currentFrame = [image.layer.position];
+       // CGPoint locationInView = [image.window convertPoint:point fromView:image.window];
+
+        if ([currentItem[1] isEqual: @0]) {
+            currentImage.alpha = 0;
+            
+            NSMutableArray *temp = [[NSMutableArray alloc] init];
+            [temp addObject:currentImage];
+            [temp addObject:@1];
+            
+            [currentImage stopAnimating];
+            [currentImage.layer removeAllAnimations];
+            currentImage.image = currentImage.animationImages.lastObject;
+            
+            
+
+            [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
+        }
+    }
+}
+
+//The event handling method
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event handleTap:(UITapGestureRecognizer *) gesture {
+  UITouch *touch = [[event allTouches] anyObject];
+  CGPoint location = [touch locationInView:touch.view];
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+                
+        for (int i = 0; i < self.rainDropsArray.count; i++) {
+            NSArray *currentItem = self.rainDropsArray[i];
+            UIImageView *currentImage = currentItem[0];
+            CGRect currentImageFrame = [currentImage.layer.presentationLayer frame];
+            
+           // [(RootViewController*)currentImage.superview touches began method];
+
+    //        CGPoint currentFrame = [image.layer.position];
+           // CGPoint locationInView = [image.window convertPoint:point fromView:image.window];
+
+            if (CGRectContainsPoint(currentImageFrame, location) && [currentItem[1] isEqual: @0]) {
+                currentImage.alpha = 0;
+                
+                NSMutableArray *temp = [[NSMutableArray alloc] init];
+                [temp addObject:currentImage];
+                [temp addObject:@1];
+                
+                [currentImage stopAnimating];
+                [currentImage.layer removeAllAnimations];
+                currentImage.image = currentImage.animationImages.lastObject;
+                
+                
+
+                [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
+            }
+        }
+    }
+}
+
+//- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
+//{
+//  CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+//
+//  //
+//
+//}
+
 
 -(void)queryActivities {
     
@@ -122,6 +232,7 @@
                 [temp addObject:object.objectId];
                 [temp addObject:object[@"activity"]];
                 [temp addObject:@4];
+                [temp addObject:object];
                 [self.recActivities addObject:temp];
             }
             [self.tableView reloadData];
@@ -141,6 +252,7 @@
                 [temp addObject:object.objectId];
                 [temp addObject:object[@"activity"]];
                 [temp addObject:@3];
+                [temp addObject:object];
                 [self.recActivities addObject:temp];
             }
             [self.tableView reloadData];
@@ -161,6 +273,7 @@
                 [temp addObject:object.objectId];
                 [temp addObject:object[@"activity"]];
                 [temp addObject:@2];
+                [temp addObject:object];
                 [self.recActivities addObject:temp];
             }
             [self.tableView reloadData];
@@ -204,8 +317,9 @@
     NSArray *activity = _recActivities[myIndexPath.row];
     changeEmotionViewController.activityName = activity[1];
     changeEmotionViewController.activityObjectId = activity[0];
+    changeEmotionViewController.userObject = activity[3];
     
-    self.view.window.rootViewController = changeEmotionViewController;
+    [self.navigationController pushViewController:changeEmotionViewController animated:YES];
 }
 
 @end

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ActivityRecViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface ActivityRecViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *recActivityAndScoreDict;
 @property (strong, nonatomic) NSMutableDictionary *indexedActivitiesDict;

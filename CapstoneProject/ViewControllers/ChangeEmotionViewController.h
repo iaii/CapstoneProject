@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *activites;
 @property (strong, nonatomic) NSString *activityName;
 @property (strong, nonatomic) NSString *activityObjectId;
+@property (strong, nonatomic) PFObject *userObject;
 
 @end
 
