@@ -172,49 +172,28 @@
     }
 }
 
-//The event handling method
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event handleTap:(UITapGestureRecognizer *) gesture {
-  UITouch *touch = [[event allTouches] anyObject];
-  CGPoint location = [touch locationInView:touch.view];
-    
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-                
-        for (int i = 0; i < self.rainDropsArray.count; i++) {
-            NSArray *currentItem = self.rainDropsArray[i];
-            UIImageView *currentImage = currentItem[0];
-            CGRect currentImageFrame = [currentImage.layer.presentationLayer frame];
+-(BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    for (NSInteger i = self.rainDropsArray.count-1; i>=0; i--) {
+        UIImageView *imageView = self.rainDropsArray[i][0];
+        if ([imageView.layer.presentationLayer hitTest:point]) {
+            imageView.alpha = 0;
             
-           // [(RootViewController*)currentImage.superview touches began method];
+            NSMutableArray *temp = [[NSMutableArray alloc] init];
+            [temp addObject:imageView];
+            [temp addObject:@1];
+            
+            [imageView stopAnimating];
+            [imageView.layer removeAllAnimations];
+            imageView.image = imageView.animationImages.lastObject;
+            
+            [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
 
-    //        CGPoint currentFrame = [image.layer.position];
-           // CGPoint locationInView = [image.window convertPoint:point fromView:image.window];
-
-            if (CGRectContainsPoint(currentImageFrame, location) && [currentItem[1] isEqual: @0]) {
-                currentImage.alpha = 0;
-                
-                NSMutableArray *temp = [[NSMutableArray alloc] init];
-                [temp addObject:currentImage];
-                [temp addObject:@1];
-                
-                [currentImage stopAnimating];
-                [currentImage.layer removeAllAnimations];
-                currentImage.image = currentImage.animationImages.lastObject;
-                
-                
-
-                [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
-            }
+            NSLog(@"did hit %li", (long)i);
+            return true;
         }
     }
+    return false;
 }
-
-//- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
-//{
-//  CGPoint location = [recognizer locationInView:[recognizer.view superview]];
-//
-//  //
-//
-//}
 
 
 -(void)queryActivities {
@@ -320,18 +299,6 @@
     changeEmotionViewController.userObject = activity[3];
     
     [self.navigationController pushViewController:changeEmotionViewController animated:YES];
-}
-
-- (BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    for (NSInteger i = self.rainDropsArray.count-1; i>=0; i--) {
-        UIImageView *imageView = self.rainDropsArray[i][0];
-        if ([imageView.layer.presentationLayer hitTest:point]) {
-            
-            NSLog(@"did hit %li", (long)i);
-            return true;
-        }
-    }
-    return false;
 }
 
 @end

@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B6BFD98E-9B67-47CC-AC82-D27917A6695C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CapstoneProject/ViewControllers/ActivityRecViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-touchesBegan:withEvent:handleTap:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E235B029-A285-4756-AF92-2961D19C10AE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -100,8 +84,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
             endingLineNumber = "148"
-            landmarkName = "-tapped:"
-            landmarkType = "7">
+            landmarkName = "ActivityRecViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -149,22 +133,6 @@
             startingLineNumber = "93"
             endingLineNumber = "93"
             landmarkName = "-sadAnimation"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "36F3D485-22FB-4033-9E7C-2C16A426D69C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CapstoneProject/ViewControllers/ActivityRecViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
-            landmarkName = "-activityRecViewDidhitTest:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
