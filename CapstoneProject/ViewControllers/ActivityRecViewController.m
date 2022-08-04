@@ -323,9 +323,10 @@
 }
 
 - (BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    for (NSInteger i = self.rainDropsArray.count-1; i>0; i--) {
+    for (NSInteger i = self.rainDropsArray.count-1; i>=0; i--) {
         UIImageView *imageView = self.rainDropsArray[i][0];
         if ([imageView.layer.presentationLayer hitTest:point]) {
+            
             NSLog(@"did hit %li", (long)i);
             return true;
         }
