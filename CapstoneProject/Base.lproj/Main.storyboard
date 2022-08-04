@@ -224,7 +224,7 @@
         <scene sceneID="Gv3-J9-fdj">
             <objects>
                 <viewController storyboardIdentifier="ActivityViewController" id="ycQ-em-rdA" customClass="ActivityRecViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yxG-dy-7YK">
+                    <view key="view" contentMode="scaleToFill" id="yxG-dy-7YK" customClass="ActivityRecView">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -307,6 +307,7 @@
                     <navigationItem key="navigationItem" id="Y6A-cN-4bU"/>
                     <connections>
                         <outlet property="headingText" destination="Rpw-7C-OrL" id="Fea-IA-vsk"/>
+                        <outlet property="mainView" destination="yxG-dy-7YK" id="KvW-y8-zJ6"/>
                         <outlet property="tableView" destination="EwG-uU-E1W" id="XqX-xi-gRl"/>
                     </connections>
                 </viewController>
@@ -501,6 +502,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="X4E-sL-dVN"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0un-ho-NqK">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

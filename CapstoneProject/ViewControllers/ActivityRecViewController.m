@@ -10,7 +10,6 @@
 #import "ActivityRecommendation.h"
 #import "MoodDetection.h"
 #import "ChangeEmotionViewController.h"
-#import "RaindropsUIImageView.h"
 
 #import <Parse/Parse.h>
 
@@ -20,6 +19,7 @@
 @property (strong, nonatomic) NSString *mood;
 @property (weak, nonatomic) IBOutlet UILabel *headingText;
 @property (strong, nonatomic) NSMutableArray *rainDropsArray;
+@property (strong, nonatomic) IBOutlet ActivityRecView *mainView;
 - (IBAction)didTapChangeEmotion:(id)sender;
 - (IBAction)didTapAddAcitivity:(id)sender;
 - (IBAction)didTapSelectActivity:(id)sender;
@@ -34,7 +34,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 125;
-    
+    self.mainView.delegate = self;
     self.recActivities = [[NSMutableArray alloc] init];
     
     _mood = [self.moodDectetor mood];
@@ -93,7 +93,8 @@
     [tapRecognizer setDelegate:self];
 
     for(int i = 0; i < 15; i++){
-        RaindropsUIImageView *sadImage = [[RaindropsUIImageView alloc] init];
+        UIImageView *sadImage = [[UIImageView alloc] init];
+        
         CGRect imageframe = sadImage.frame;
         
         sadImage.userInteractionEnabled = YES;
@@ -148,7 +149,6 @@
     for (int i = 0; i < self.rainDropsArray.count; i++) {
         NSArray *currentItem = self.rainDropsArray[i];
         UIImageView *currentImage = currentItem[0];
-        
        // [(RootViewController*)currentImage.superview touches began method];
 
 //        CGPoint currentFrame = [image.layer.position];
@@ -320,6 +320,17 @@
     changeEmotionViewController.userObject = activity[3];
     
     [self.navigationController pushViewController:changeEmotionViewController animated:YES];
+}
+
+- (BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    for (NSInteger i = self.rainDropsArray.count-1; i>0; i--) {
+        UIImageView *imageView = self.rainDropsArray[i][0];
+        if ([imageView.layer.presentationLayer hitTest:point]) {
+            NSLog(@"did hit %li", (long)i);
+            return true;
+        }
+    }
+    return false;
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13E20A46289B492500C2CE12 /* ActivityRecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E20A45289B492500C2CE12 /* ActivityRecView.m */; };
 		340771E69C21A348911C9217 /* Pods_CapstoneProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8B93BEB286AB9F3D1316F3 /* Pods_CapstoneProject.framework */; };
 		764D6C76F584A7E1DD57850C /* Pods_CapstoneProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89366882C845FE22C63CE62D /* Pods_CapstoneProjectUITests.framework */; };
 		EC576E09A084256B4E300673 /* Pods_CapstoneProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66950B703E5F785384E3108A /* Pods_CapstoneProjectTests.framework */; };
@@ -19,7 +20,6 @@
 		F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */; };
 		F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */; };
 		F576C102289B1EA800C93523 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C101289B1EA800C93523 /* ProfileViewController.m */; };
-		F576C105289B3C8F00C93523 /* RaindropsUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C104289B3C8F00C93523 /* RaindropsUIImageView.m */; };
 		F5D0319A287C8F520065FDF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D03199287C8F520065FDF3 /* AppDelegate.m */; };
 		F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0319C287C8F520065FDF3 /* SceneDelegate.m */; };
 		F5D031A3287C8F520065FDF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D031A1287C8F520065FDF3 /* Main.storyboard */; };
@@ -51,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13E20A44289B492500C2CE12 /* ActivityRecView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityRecView.h; sourceTree = "<group>"; };
+		13E20A45289B492500C2CE12 /* ActivityRecView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityRecView.m; sourceTree = "<group>"; };
 		212AFF4A3BDE66FD65861084 /* Pods-CapstoneProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectTests/Pods-CapstoneProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BF5F8F5A7A1B8A63FA53C7F /* Pods-CapstoneProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectUITests/Pods-CapstoneProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		42A3D1D3588070588CAA87E2 /* Pods-CapstoneProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectTests/Pods-CapstoneProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,8 +78,6 @@
 		F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeEmotionViewController.m; sourceTree = "<group>"; };
 		F576C100289B1EA800C93523 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		F576C101289B1EA800C93523 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		F576C103289B3C8E00C93523 /* RaindropsUIImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaindropsUIImageView.h; sourceTree = "<group>"; };
-		F576C104289B3C8F00C93523 /* RaindropsUIImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaindropsUIImageView.m; sourceTree = "<group>"; };
 		F5D03195287C8F520065FDF3 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D03198287C8F520065FDF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F5D03199287C8F520065FDF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -171,6 +171,8 @@
 				F5D031D1287C9D270065FDF3 /* AXHomeViewController.m */,
 				F5D031CD287C9A6B0065FDF3 /* LoginViewController.h */,
 				F5D031CE287C9A6B0065FDF3 /* LoginViewController.m */,
+				13E20A44289B492500C2CE12 /* ActivityRecView.h */,
+				13E20A45289B492500C2CE12 /* ActivityRecView.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -224,8 +226,6 @@
 				F576C0EF2880F1B000C93523 /* ViewControllers */,
 				F576C0FA288731A100C93523 /* ActivityRecommendationTableViewCell.h */,
 				F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */,
-				F576C103289B3C8E00C93523 /* RaindropsUIImageView.h */,
-				F576C104289B3C8F00C93523 /* RaindropsUIImageView.m */,
 			);
 			path = CapstoneProject;
 			sourceTree = "<group>";
@@ -462,7 +462,6 @@
 				F576C0DE287F46E300C93523 /* ActivityRecViewController.m in Sources */,
 				F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */,
 				F576C102289B1EA800C93523 /* ProfileViewController.m in Sources */,
-				F576C105289B3C8F00C93523 /* RaindropsUIImageView.m in Sources */,
 				F576C0EA2880E76100C93523 /* AddActivityViewController.m in Sources */,
 				F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */,
 				F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */,
@@ -471,6 +470,7 @@
 				F576C0F62882197100C93523 /* MoodDetection.m in Sources */,
 				F576C0ED2880EFFA00C93523 /* DisplayActivityViewController.m in Sources */,
 				F576C0F32880F2AC00C93523 /* SignUpViewController.m in Sources */,
+				13E20A46289B492500C2CE12 /* ActivityRecView.m in Sources */,
 				F576C0E72880E0C600C93523 /* ActivityRecommendation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
