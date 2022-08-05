@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *headingText;
 @property (strong, nonatomic) NSMutableArray *rainDropsArray;
 @property (strong, nonatomic) IBOutlet ActivityRecView *mainView;
+@property (strong, nonatomic) UILabel *rainDropScoreLabel;
+@property (strong, nonatomic) NSNumber *rainDropCounter;
+@property (strong, nonatomic) NSNumber *rainDropArrayCount;
 - (IBAction)didTapChangeEmotion:(id)sender;
 - (IBAction)didTapAddAcitivity:(id)sender;
 - (IBAction)didTapSelectActivity:(id)sender;
@@ -37,9 +40,8 @@
     self.mainView.delegate = self;
     self.recActivities = [[NSMutableArray alloc] init];
     
-    _mood = [self.moodDectetor mood];
-    NSString *heading = [@"Since you're feeling " stringByAppendingString: _mood.lowercaseString];
-    _headingText.text = [heading stringByAppendingString: @" you should"];
+    self.mood = [self.moodDectetor mood];
+    self.headingText.text = @"Recommended activities";
     
     [self loadAnimations];
     [self queryActivities];
@@ -80,68 +82,80 @@
 }
 
 -(void)sadAnimation {
-    
-//    UITapGestureRecognizer *singleFingerTap =
-//      [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                              action:@selector(handleSingleTap:)];
-//    [self.view addGestureRecognizer:singleFingerTap];
-    
+    self.rainDropCounter = @0;
+    self.rainDropArrayCount = @0;
     self.rainDropsArray = [[NSMutableArray alloc] init];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-   // [tapRecognizer setNumberOfTapsRequired:1];
     [tapRecognizer setDelegate:self];
-
-    for(int i = 0; i < 15; i++){
-        UIImageView *sadImage = [[UIImageView alloc] init];
+    
+    
+    self.rainDropScoreLabel = [[UILabel alloc] init];
+    self.rainDropScoreLabel.backgroundColor = [UIColor clearColor];
+    self.rainDropScoreLabel.numberOfLines = 0;
+    self.rainDropScoreLabel.textColor = [UIColor blackColor];
+    
+    //position label
+    CGRect frame = self.rainDropScoreLabel.frame;
+    frame.origin = CGPointMake((int)([UIScreen mainScreen].bounds.size.width - 75), (int)([UIScreen mainScreen].bounds.size.height - 200));
+    self.rainDropScoreLabel.frame = frame;
+    
+    self.rainDropScoreLabel.text = [@"Score: " stringByAppendingString: [NSString stringWithFormat:@"%@", self.rainDropCounter]];
+    [self.rainDropScoreLabel sizeToFit]; //set width and height of label based on text size
+    [self.view addSubview:self.rainDropScoreLabel];     //add label to view
+    
+    self.rainDropArrayCount = [NSNumber numberWithInt:[self.rainDropArrayCount intValue] + (int)arc4random_uniform(15) + 5];
+    
+    for(int i = 0; i < [self.rainDropArrayCount intValue]; i++){
+        [CATransaction begin];
         
+        UIImageView *sadImage = [[UIImageView alloc] init];
         CGRect imageframe = sadImage.frame;
         
         sadImage.userInteractionEnabled = YES;
         
         [sadImage addGestureRecognizer:tapRecognizer];
-
+        
+        [CATransaction setCompletionBlock:^{
+            [sadImage removeFromSuperview];
+        }];
+        
         int size = ((int)arc4random_uniform(100) + 25);
         imageframe.size.height = size;
         imageframe.size.width = size;
-        //imageframe.origin = CGPointMake(200, 200);
         imageframe.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         sadImage.frame = imageframe;
         [sadImage setImage:[UIImage imageNamed:@"rain"]];
         [self.view addSubview:sadImage];
         sadImage.layer.zPosition = MAXFLOAT;
-
+        
         CABasicAnimation *animation = [CABasicAnimation animation];
         animation.keyPath = @"position.y";
-        animation.fromValue = @0;
-        animation.toValue = @700;
-        animation.duration = 5; //(int)arc4random_uniform(3) + 1;
-
+        animation.fromValue = @-50;
+        animation.toValue = @800;
+        animation.duration = (int)arc4random_uniform(3) + 2;
         animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5:0.35:0.55:0.3];
-
         animation.beginTime = CACurrentMediaTime() + (int)arc4random_uniform(5);
-
-        sadImage.animationRepeatCount = 1; // loops only once
-
+        
+        sadImage.animationRepeatCount = 1;
+        
         [sadImage.layer addAnimation:animation forKey:@"basic"];
-
-        sadImage.layer.position = CGPointMake((int)arc4random_uniform(500), 0);
-
+        
+        sadImage.layer.position = CGPointMake((int)arc4random_uniform([UIScreen mainScreen].bounds.size.width - size) + size, [UIScreen mainScreen].bounds.size.height + size);
+        
         CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
         flash.fromValue = [NSNumber numberWithFloat:1.0];
         flash.toValue = [NSNumber numberWithFloat:0.0];
-        flash.duration = 7;        // 1 second
-        flash.autoreverses = YES;    // Back
-       // flash.repeatCount = 3;       // Or whatever
-
+        flash.duration = 7;
+        flash.autoreverses = NO;
         [sadImage.layer addAnimation:flash forKey:@"flashAnimation"];
-
         
         NSMutableArray *rainDropImageAndStatus = [[NSMutableArray alloc] init];
         [rainDropImageAndStatus addObject:sadImage];
         [rainDropImageAndStatus addObject:@0];
-        
         [self.rainDropsArray addObject:rainDropImageAndStatus];
+        
+        [CATransaction commit];
     }
 }
 
@@ -149,11 +163,6 @@
     for (int i = 0; i < self.rainDropsArray.count; i++) {
         NSArray *currentItem = self.rainDropsArray[i];
         UIImageView *currentImage = currentItem[0];
-       // [(RootViewController*)currentImage.superview touches began method];
-
-//        CGPoint currentFrame = [image.layer.position];
-       // CGPoint locationInView = [image.window convertPoint:point fromView:image.window];
-
         if ([currentItem[1] isEqual: @0]) {
             currentImage.alpha = 0;
             
@@ -165,38 +174,83 @@
             [currentImage.layer removeAllAnimations];
             currentImage.image = currentImage.animationImages.lastObject;
             
-            
-
             [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
         }
     }
 }
 
 -(BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    for (NSInteger i = self.rainDropsArray.count-1; i>=0; i--) {
+    for (NSInteger i = self.rainDropsArray.count - 1; i >= 0; i--) {
         UIImageView *imageView = self.rainDropsArray[i][0];
-        if ([imageView.layer.presentationLayer hitTest:point]) {
-            imageView.alpha = 0;
-            
+        if ([imageView.layer.presentationLayer hitTest:point] && [self.rainDropsArray[i][1]  isEqual: @0]) {
             NSMutableArray *temp = [[NSMutableArray alloc] init];
             [temp addObject:imageView];
             [temp addObject:@1];
             
+            imageView.alpha = 0;
             [imageView stopAnimating];
             [imageView.layer removeAllAnimations];
             imageView.image = imageView.animationImages.lastObject;
             
             [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
-
-            NSLog(@"did hit %li", (long)i);
+            
+            self.rainDropCounter = [NSNumber numberWithInt:[self.rainDropCounter intValue] + 1];
+            
+            self.rainDropScoreLabel.text = [@"Score: " stringByAppendingString: [NSString stringWithFormat:@"%@", self.rainDropCounter]];
+            
+            if ([self.rainDropCounter intValue] == [self.rainDropArrayCount intValue]) {
+                [self changeSadToHappyAnimation];
+            }
             return true;
         }
     }
     return false;
 }
 
+-(void)changeSadToHappyAnimation {
+    
+    UIImageView *rainbowImage = [[UIImageView alloc] init];
+    
+    CGRect imageframe = rainbowImage.frame;
+    
+    rainbowImage.userInteractionEnabled = YES;
+    
+    int size = ((int)arc4random_uniform(100) + 25);
+    imageframe.size.height = size;
+    imageframe.size.width = size;
+    imageframe.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, 50);
+    rainbowImage.frame = imageframe;
+    [rainbowImage setImage:[UIImage imageNamed:@"rainbow"]];
+    [self.view addSubview:rainbowImage];
+    rainbowImage.layer.zPosition = MAXFLOAT;
+    
+    imageframe.origin = CGPointMake(-50.0, 25);
+    imageframe.size.width = [UIScreen mainScreen].bounds.size.width + size;
+    imageframe.size.height = size + 150;
+    [UIView animateWithDuration:3.5
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+        rainbowImage.frame = imageframe;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:3.5
+                              delay:0.0
+                            options: UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+            CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
+            flash.fromValue = [NSNumber numberWithFloat: 1.0];
+            flash.toValue = [NSNumber numberWithFloat: 0.0];
+            flash.autoreverses = YES;
+            [rainbowImage.layer addAnimation:flash forKey:@"flashAnimation"];
+            
+        } completion:^(BOOL finished) {
+            [rainbowImage.layer removeAllAnimations];
+            [rainbowImage removeFromSuperview];
+        }];
+    }];
+}
 
--(void)queryActivities {
+-(void)queryActivities { // will make a helper method for the queries soon
     
     PFQuery *query = [ActivityRecommendation query];
     
@@ -206,7 +260,6 @@
                                               NSError * _Nullable error) {
         if (objects) {
             for(PFObject *object in objects) {
-                NSLog(@"%@", object);
                 NSMutableArray *temp = [[NSMutableArray alloc] init];
                 [temp addObject:object.objectId];
                 [temp addObject:object[@"activity"]];
@@ -216,7 +269,7 @@
             }
             [self.tableView reloadData];
         } else {
-            NSLog(@"%@", error);
+            NSLog(@"%@", error); // will change to an alert later
         }
     }];
     
@@ -264,10 +317,10 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ActivityRecommendationTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
-
+    
     NSArray *activity = _recActivities[indexPath.row];
     [cell setUpActivity: activity[1]];
-
+    
     return cell;
 }
 

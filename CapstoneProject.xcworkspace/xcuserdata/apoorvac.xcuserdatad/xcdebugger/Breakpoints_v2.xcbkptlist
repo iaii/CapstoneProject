@@ -76,30 +76,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "17C38175-F682-4D5D-9A8F-EBAE247FF563"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CapstoneProject/ViewControllers/ActivityRecViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "ActivityRecViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "40F7CAFD-B611-4AD0-98C0-3F60C9EBAE72"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CapstoneProject/ViewControllers/ActivityRecViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-tapped:"
             landmarkType = "7">
          </BreakpointContent>
@@ -117,22 +101,6 @@
             startingLineNumber = "13"
             endingLineNumber = "13"
             landmarkName = "-hitTest:withEvent:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A7D9AEC2-6612-4B59-BE6E-D5E10D2567CE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CapstoneProject/ViewControllers/ActivityRecViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-sadAnimation"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
