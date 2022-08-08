@@ -10,13 +10,15 @@
 #import "ActivityRecommendation.h"
 #import "MoodDetection.h"
 #import "ChangeEmotionViewController.h"
-
+#import "DisplayActivityViewController.h"
 #import <Parse/Parse.h>
 
 @interface ActivityRecViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSString *mood;
+@property (strong, nonatomic) NSString *firstMood;
+@property (strong, nonatomic) NSString *secondMood;
+@property (strong, nonatomic) NSString *thirdMood;
 @property (weak, nonatomic) IBOutlet UILabel *headingText;
 @property (strong, nonatomic) NSMutableArray *rainDropsArray;
 @property (strong, nonatomic) IBOutlet ActivityRecView *mainView;
@@ -40,15 +42,20 @@
     self.mainView.delegate = self;
     self.recActivities = [[NSMutableArray alloc] init];
     
-    self.mood = [self.moodDectetor mood];
+    self.firstMood = [self.moodDectetor firstMood];
+    self.secondMood = [self.moodDectetor secondMood];
+    self.thirdMood = [self.moodDectetor thirdMood];
+
     self.headingText.text = @"Recommended activities";
     
     [self loadAnimations];
-    [self queryActivities];
+    [self queryActivities: @"firstEmotionTag" : self.firstMood : @4];
+    [self queryActivities: @"secondEmotionTag" : self.secondMood : @3];
+    [self queryActivities: @"thridEmotionTag" : self.thirdMood : @2];
 }
 
 -(void) loadAnimations {
-    if([self.mood isEqualToString:@"Happy"]) {
+    if([self.firstMood isEqualToString:@"Happy"]) {
         for(int i = 0; i < 100; i++){
             UIImageView *careImage = [[UIImageView alloc] init];
             
@@ -76,7 +83,7 @@
             flash.autoreverses = YES;
             [careImage.layer addAnimation:flash forKey:@"flashAnimation"];
         }
-    } else if([self.mood isEqualToString:@"Sad"]) {
+    } else if([self.firstMood isEqualToString:@"Sad"]) {
         [self sadAnimation];
     }
 }
@@ -104,7 +111,7 @@
     [self.rainDropScoreLabel sizeToFit]; //set width and height of label based on text size
     [self.view addSubview:self.rainDropScoreLabel];     //add label to view
     
-    self.rainDropArrayCount = [NSNumber numberWithInt:[self.rainDropArrayCount intValue] + (int)arc4random_uniform(15) + 5];
+    self.rainDropArrayCount = [NSNumber numberWithInt:[self.rainDropArrayCount intValue] + (int)arc4random_uniform(5) + 5];
     
     for(int i = 0; i < [self.rainDropArrayCount intValue]; i++){
         [CATransaction begin];
@@ -156,26 +163,6 @@
         [self.rainDropsArray addObject:rainDropImageAndStatus];
         
         [CATransaction commit];
-    }
-}
-
--(void)tapped:(UITapGestureRecognizer *) gesture {
-    for (int i = 0; i < self.rainDropsArray.count; i++) {
-        NSArray *currentItem = self.rainDropsArray[i];
-        UIImageView *currentImage = currentItem[0];
-        if ([currentItem[1] isEqual: @0]) {
-            currentImage.alpha = 0;
-            
-            NSMutableArray *temp = [[NSMutableArray alloc] init];
-            [temp addObject:currentImage];
-            [temp addObject:@1];
-            
-            [currentImage stopAnimating];
-            [currentImage.layer removeAllAnimations];
-            currentImage.image = currentImage.animationImages.lastObject;
-            
-            [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
-        }
     }
 }
 
@@ -250,11 +237,10 @@
     }];
 }
 
--(void)queryActivities { // will make a helper method for the queries soon
+-(void)queryActivities:(NSString *)columnName : (NSString *)moodName : (NSNumber *)score {
     
     PFQuery *query = [ActivityRecommendation query];
-    
-    [query whereKey:@"firstEmotionTag" equalTo:_mood];
+    [query whereKey:columnName equalTo: moodName];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
                                               NSError * _Nullable error) {
@@ -263,7 +249,7 @@
                 NSMutableArray *temp = [[NSMutableArray alloc] init];
                 [temp addObject:object.objectId];
                 [temp addObject:object[@"activity"]];
-                [temp addObject:@4];
+                [temp addObject:score];
                 [temp addObject:object];
                 [self.recActivities addObject:temp];
             }
@@ -272,47 +258,10 @@
             NSLog(@"%@", error); // will change to an alert later
         }
     }];
+}
+
+-(void)displayTopRankedActivities {
     
-    PFQuery *query2 = [ActivityRecommendation query];
-    [query2 whereKey:@"secondEmotionTag" equalTo:_mood];
-    
-    [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
-                                               NSError * _Nullable error) {
-        if (objects) {
-            for(PFObject *object in objects) {
-                NSMutableArray *temp = [[NSMutableArray alloc] init];
-                [temp addObject:object.objectId];
-                [temp addObject:object[@"activity"]];
-                [temp addObject:@3];
-                [temp addObject:object];
-                [self.recActivities addObject:temp];
-            }
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error);
-        }
-    }];
-    
-    PFQuery *query3 = [ActivityRecommendation query];
-    [query3 whereKey:@"thirdEmotionTag" equalTo:_mood];
-    
-    [query3 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
-                                               NSError * _Nullable error) {
-        if (objects) {
-            
-            for(PFObject *object in objects){
-                NSMutableArray *temp = [[NSMutableArray alloc] init];
-                [temp addObject:object.objectId];
-                [temp addObject:object[@"activity"]];
-                [temp addObject:@2];
-                [temp addObject:object];
-                [self.recActivities addObject:temp];
-            }
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error);
-        }
-    }];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -332,6 +281,18 @@
     return 1;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DisplayActivityViewController *displayActivityViewController = [storyboard instantiateViewControllerWithIdentifier:@"DisplayActivityViewController"];
+    
+    NSArray *activity = self.recActivities[indexPath.row];
+    displayActivityViewController.activity = activity[1];
+    
+    [self.navigationController pushViewController:displayActivityViewController animated:YES];
+}
+
 - (IBAction)didTapSelectActivity:(id)sender {
 }
 
@@ -346,7 +307,7 @@
     
     UITableViewCell *cell = sender;
     NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
-    NSArray *activity = _recActivities[myIndexPath.row];
+    NSArray *activity = self.recActivities[myIndexPath.row];
     changeEmotionViewController.activityName = activity[1];
     changeEmotionViewController.activityObjectId = activity[0];
     changeEmotionViewController.userObject = activity[3];

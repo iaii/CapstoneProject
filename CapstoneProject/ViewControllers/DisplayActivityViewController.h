@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DisplayActivityViewController : UIViewController
 
+@property (strong, nonatomic) NSString *activity;
+
 @end
 
 NS_ASSUME_NONNULL_END

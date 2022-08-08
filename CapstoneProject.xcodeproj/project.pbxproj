@@ -20,6 +20,7 @@
 		F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */; };
 		F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */; };
 		F576C102289B1EA800C93523 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C101289B1EA800C93523 /* ProfileViewController.m */; };
+		F576C10B289DE06F00C93523 /* RecommendationEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C10A289DE06F00C93523 /* RecommendationEngine.m */; };
 		F5D0319A287C8F520065FDF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D03199287C8F520065FDF3 /* AppDelegate.m */; };
 		F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0319C287C8F520065FDF3 /* SceneDelegate.m */; };
 		F5D031A3287C8F520065FDF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D031A1287C8F520065FDF3 /* Main.storyboard */; };
@@ -78,6 +79,8 @@
 		F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeEmotionViewController.m; sourceTree = "<group>"; };
 		F576C100289B1EA800C93523 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		F576C101289B1EA800C93523 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		F576C109289DE06F00C93523 /* RecommendationEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendationEngine.h; sourceTree = "<group>"; };
+		F576C10A289DE06F00C93523 /* RecommendationEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendationEngine.m; sourceTree = "<group>"; };
 		F5D03195287C8F520065FDF3 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D03198287C8F520065FDF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F5D03199287C8F520065FDF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 		F576C0F02880F1DF00C93523 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F576C109289DE06F00C93523 /* RecommendationEngine.h */,
+				F576C10A289DE06F00C93523 /* RecommendationEngine.m */,
 				F576C0E52880E0C600C93523 /* ActivityRecommendation.h */,
 				F576C0E62880E0C600C93523 /* ActivityRecommendation.m */,
 				F576C0F42882197100C93523 /* MoodDetection.h */,
@@ -420,11 +425,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +476,7 @@
 				F5D031CF287C9A6B0065FDF3 /* LoginViewController.m in Sources */,
 				F576C0F62882197100C93523 /* MoodDetection.m in Sources */,
 				F576C0ED2880EFFA00C93523 /* DisplayActivityViewController.m in Sources */,
+				F576C10B289DE06F00C93523 /* RecommendationEngine.m in Sources */,
 				F576C0F32880F2AC00C93523 /* SignUpViewController.m in Sources */,
 				13E20A46289B492500C2CE12 /* ActivityRecView.m in Sources */,
 				F576C0E72880E0C600C93523 /* ActivityRecommendation.m in Sources */,

@@ -50,18 +50,34 @@
 //    }];
 //
 //    [dataTask resume];
+//    NSLog(@"hello");
+//    NSLog(@"%@", self.moodAPIResponse);
+    
+    self.firstMood = @"Sad";
+    self.secondMood = @"Happy";
+    self.thirdMood = @"Angry";
     
     // figures out the users mood based on what the api returns
+//    self.firstMood = [self findMood:@"" : @""];
+//    self.secondMood = [self findMood:self.firstMood : @""];
+//    self.thirdMood = [self findMood:self.firstMood : self.secondMood];
 
-    _mood = @"Sad";
+//    NSLog(@"%@", self.firstMood);
+//    NSLog(@"%@", self.secondMood);
+//    NSLog(@"%@", self.thirdMood);
+}
+
+-(NSString *)findMood:(NSString *)firstExceptionMood : (NSString *)secondExceptionMood {
+    NSString *mood = [[NSString alloc] init];
     int highestMoodCount = 0;
-//
-//    for(id key in self.moodAPIResponse){
-//        if([self.moodAPIResponse[key] intValue] > highestMoodCount){
-//            _mood = key;
-//            highestMoodCount = [[_moodAPIResponse objectForKey:key] intValue];
-//        }
-//    }
+    
+    for(id key in self.moodAPIResponse){
+        if([self.moodAPIResponse[key] intValue] >= highestMoodCount && ![key isEqualToString:firstExceptionMood] && ![key isEqualToString:secondExceptionMood]){
+            mood = key;
+            highestMoodCount = [[self.moodAPIResponse objectForKey:key] intValue];
+        }
+    }
+    return mood;
 }
 
 @end
