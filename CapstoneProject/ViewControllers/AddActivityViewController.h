@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CustomeActivityViewController : UIViewController
+@interface AddActivityViewController : UIViewController
 
 @end
 

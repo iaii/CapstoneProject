@@ -6,13 +6,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MoodDetection.h"
+#import "ActivityRecView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ActivityRecViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface ActivityRecViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate, ActivityRecViewDelegate>
 
-@property (strong, nonatomic) NSArray *recActivities;
-
+@property (strong, nonatomic) NSMutableDictionary *recActivityAndScoreDict;
+@property (strong, nonatomic) NSMutableDictionary *indexedActivitiesDict;
+@property (strong, nonatomic) NSMutableArray *recActivities;
+@property (strong, nonatomic) MoodDetection *moodDectetor;
 
 @end
 

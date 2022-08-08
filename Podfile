@@ -8,7 +8,7 @@ target 'CapstoneProject' do
   # Pods for CapstoneProject
   pod 'Parse'
   pod 'Parse/UI'
-
+  
   target 'CapstoneProjectTests' do
     inherit! :search_paths
     # Pods for testing
