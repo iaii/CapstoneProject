@@ -11,6 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RecommendationEngine : NSObject
 
+@property (strong, nonatomic) NSString *firstMood;
+@property (strong, nonatomic) NSString *secondtMood;
+@property (strong, nonatomic) NSString *thirdMood;
+
 @end
 
 NS_ASSUME_NONNULL_END

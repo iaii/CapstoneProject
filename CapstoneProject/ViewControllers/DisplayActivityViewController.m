@@ -11,9 +11,6 @@
 
 @interface DisplayActivityViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *displayActivityText;
-@property (weak, nonatomic) IBOutlet UILabel *moodText;
-@property (strong, nonatomic) NSString *moodDetected;
-
 @end
 
 @implementation DisplayActivityViewController
@@ -21,27 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MoodDetection *moodDectertor = [[MoodDetection alloc] init];
-    _moodDetected = [moodDectertor mood];
-    _moodText.text = _moodDetected;
+    self.displayActivityText.text = self.activity;
     
-}
-
--(void)queryPosts {
-    PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
-                       
-    [query includeKey:_moodDetected];
-
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
-        NSError * _Nullable error) {
-        if (objects) {
-//            self.posts = objects;
-//            [self.tableView reloadData];
-
-        } else {
-            NSLog(@"%@", error);
-        }
-    }];
 }
 
 @end
