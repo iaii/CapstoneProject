@@ -51,22 +51,14 @@
 
 - (IBAction)didTapChangeEmotionButton:(id)sender {
     [self changeFirstEmotionInDatabase];
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ActivityViewController"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)changeFirstEmotionInDatabase {
     PFQuery *query = [PFQuery queryWithClassName:@"Activities"];
-    
-  //   Retrieve the object by id
     [query getObjectInBackgroundWithId:self.activityObjectId block:^(PFObject *activities, NSError *error) {
-
         activities[@"firstEmotionTag"] = self.chosenMood;
-//        activities.f
-//
         [activities saveInBackground];
     }];
-
 }
 @end

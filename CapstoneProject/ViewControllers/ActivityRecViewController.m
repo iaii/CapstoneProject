@@ -12,6 +12,7 @@
 #import "ChangeEmotionViewController.h"
 #import "DisplayActivityViewController.h"
 #import <Parse/Parse.h>
+#import "RecommendationEngine.h"
 
 @interface ActivityRecViewController ()
 
@@ -48,10 +49,19 @@
 
     self.headingText.text = @"Recommended activities";
     
+    
+    RecommendationEngine *rec = [[RecommendationEngine alloc] init];
+    rec.firstMood = self.firstMood;
+    rec.secondtMood = self.secondMood;
+    rec.thirdMood = self.thirdMood;
+    
+    [rec getUserInfo];
+    
+    
     [self loadAnimations];
-    [self queryActivities: @"firstEmotionTag" : self.firstMood : @4];
-    [self queryActivities: @"secondEmotionTag" : self.secondMood : @3];
-    [self queryActivities: @"thridEmotionTag" : self.thirdMood : @2];
+//    [self queryActivities: @"firstEmotionTag" : self.firstMood : @4];
+//    [self queryActivities: @"secondEmotionTag" : self.secondMood : @3];
+//    [self queryActivities: @"thridEmotionTag" : self.thirdMood : @2];
 }
 
 -(void) loadAnimations {
