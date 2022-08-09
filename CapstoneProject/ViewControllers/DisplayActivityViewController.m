@@ -17,9 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.displayActivityText.text = self.activity;
-    
 }
 
 @end

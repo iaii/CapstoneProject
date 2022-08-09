@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *secondtMood;
 @property (strong, nonatomic) NSString *thirdMood;
 
+-(void)getUserInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -32,7 +32,6 @@
     activityRecViewController.moodDectetor = moodDectertor;
     
     [self.navigationController pushViewController:activityRecViewController animated:YES];
-    //self.view.window.rootViewController = activityRecViewController;
 }
 
 - (IBAction)didTapLogout:(id)sender {
