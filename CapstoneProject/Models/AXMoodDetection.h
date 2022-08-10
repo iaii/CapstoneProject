@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MoodDetection : NSObject
+@interface AXMoodDetection : NSObject
 
 @property (strong, nonatomic) NSDictionary *stopWordsForMoods;
 @property (strong, nonatomic) NSMutableDictionary *moodCount;
@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *firstMood;
 @property (strong, nonatomic) NSString *secondMood;
 @property (strong, nonatomic) NSString *thirdMood;
+
 - (void)detectMood:(NSString *)userText;
 
 @end

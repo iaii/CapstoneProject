@@ -5,21 +5,21 @@
 //  Created by Apoorva Chilukuri on 7/14/22.
 //
 
-#import "DisplayActivityViewController.h"
-#import "MoodDetection.h"
+#import "AXDisplayActivityViewController.h"
+#import "AXMoodDetection.h"
 #import <Parse/Parse.h>
 
-@interface DisplayActivityViewController ()
+@interface AXDisplayActivityViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *displayActivityText;
+
 @end
 
-@implementation DisplayActivityViewController
+@implementation AXDisplayActivityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.displayActivityText.text = self.activity;
-    
 }
 
 @end

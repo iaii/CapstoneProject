@@ -1,5 +1,5 @@
 //
-//  CustomeActivityViewController.h
+//  DisplayActivityViewController.h
 //  CapstoneProject
 //
 //  Created by Apoorva Chilukuri on 7/14/22.
@@ -9,7 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddActivityViewController : UIViewController
+@interface AXDisplayActivityViewController : UIViewController
+
+@property (strong, nonatomic) NSString *activity;
 
 @end
 

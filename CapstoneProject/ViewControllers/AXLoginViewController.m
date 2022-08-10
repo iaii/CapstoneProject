@@ -5,17 +5,16 @@
 //  Created by Apoorva Chilukuri on 7/11/22.
 //
 
-#import "LoginViewController.h"
+#import "AXLoginViewController.h"
 #import <Parse/Parse.h>
-//#import <Parse/PFFacebookUtils.h>
 
-@interface LoginViewController ()
+@interface AXLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *usernameField;
 @property (weak, nonatomic) IBOutlet UITextView *passwordField;
 
 @end
 
-@implementation LoginViewController
+@implementation AXLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,7 +49,6 @@
                                                                    message:@"Message"
                                                             preferredStyle:(UIAlertControllerStyleAlert)];
     
-    
     // create a cancel action
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                            style:UIAlertActionStyleCancel
@@ -72,7 +70,6 @@
     [self presentViewController:alert animated:YES completion:^{
         // optional code for what happens after the alert controller has finished presenting
     }];
-    
 }
 
 @end

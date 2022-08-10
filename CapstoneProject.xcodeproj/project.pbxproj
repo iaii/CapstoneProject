@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13E20A46289B492500C2CE12 /* ActivityRecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E20A45289B492500C2CE12 /* ActivityRecView.m */; };
+		13E20A46289B492500C2CE12 /* AXActivityRecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E20A45289B492500C2CE12 /* AXActivityRecView.m */; };
 		340771E69C21A348911C9217 /* Pods_CapstoneProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8B93BEB286AB9F3D1316F3 /* Pods_CapstoneProject.framework */; };
 		764D6C76F584A7E1DD57850C /* Pods_CapstoneProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89366882C845FE22C63CE62D /* Pods_CapstoneProjectUITests.framework */; };
 		EC576E09A084256B4E300673 /* Pods_CapstoneProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66950B703E5F785384E3108A /* Pods_CapstoneProjectTests.framework */; };
-		F576C0DE287F46E300C93523 /* ActivityRecViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0DD287F46E300C93523 /* ActivityRecViewController.m */; };
-		F576C0E72880E0C600C93523 /* ActivityRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0E62880E0C600C93523 /* ActivityRecommendation.m */; };
-		F576C0EA2880E76100C93523 /* AddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0E92880E76100C93523 /* AddActivityViewController.m */; };
-		F576C0ED2880EFFA00C93523 /* DisplayActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0EC2880EFFA00C93523 /* DisplayActivityViewController.m */; };
-		F576C0F32880F2AC00C93523 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0F22880F2AC00C93523 /* SignUpViewController.m */; };
-		F576C0F62882197100C93523 /* MoodDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0F52882197100C93523 /* MoodDetection.m */; };
-		F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */; };
-		F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */; };
-		F576C102289B1EA800C93523 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C101289B1EA800C93523 /* ProfileViewController.m */; };
-		F576C10B289DE06F00C93523 /* RecommendationEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C10A289DE06F00C93523 /* RecommendationEngine.m */; };
+		F576C0DE287F46E300C93523 /* AXActivityRecViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0DD287F46E300C93523 /* AXActivityRecViewController.m */; };
+		F576C0E72880E0C600C93523 /* AXActivityRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0E62880E0C600C93523 /* AXActivityRecommendation.m */; };
+		F576C0EA2880E76100C93523 /* AXAddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0E92880E76100C93523 /* AXAddActivityViewController.m */; };
+		F576C0ED2880EFFA00C93523 /* AXDisplayActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0EC2880EFFA00C93523 /* AXDisplayActivityViewController.m */; };
+		F576C0F32880F2AC00C93523 /* AXSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0F22880F2AC00C93523 /* AXSignUpViewController.m */; };
+		F576C0F62882197100C93523 /* AXMoodDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0F52882197100C93523 /* AXMoodDetection.m */; };
+		F576C0FC288731A100C93523 /* AXActivityRecommendationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FB288731A100C93523 /* AXActivityRecommendationTableViewCell.m */; };
+		F576C0FF289442A700C93523 /* AXChangeEmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FE289442A700C93523 /* AXChangeEmotionViewController.m */; };
+		F576C102289B1EA800C93523 /* AXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C101289B1EA800C93523 /* AXProfileViewController.m */; };
+		F576C10B289DE06F00C93523 /* AXRecommendationEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C10A289DE06F00C93523 /* AXRecommendationEngine.m */; };
 		F5D0319A287C8F520065FDF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D03199287C8F520065FDF3 /* AppDelegate.m */; };
 		F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0319C287C8F520065FDF3 /* SceneDelegate.m */; };
 		F5D031A3287C8F520065FDF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D031A1287C8F520065FDF3 /* Main.storyboard */; };
@@ -30,7 +30,7 @@
 		F5D031B5287C8F530065FDF3 /* CapstoneProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031B4287C8F530065FDF3 /* CapstoneProjectTests.m */; };
 		F5D031BF287C8F530065FDF3 /* CapstoneProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031BE287C8F530065FDF3 /* CapstoneProjectUITests.m */; };
 		F5D031C1287C8F530065FDF3 /* CapstoneProjectUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031C0287C8F530065FDF3 /* CapstoneProjectUITestsLaunchTests.m */; };
-		F5D031CF287C9A6B0065FDF3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031CE287C9A6B0065FDF3 /* LoginViewController.m */; };
+		F5D031CF287C9A6B0065FDF3 /* AXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031CE287C9A6B0065FDF3 /* AXLoginViewController.m */; };
 		F5D031D2287C9D270065FDF3 /* AXHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D031D1287C9D270065FDF3 /* AXHomeViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		13E20A44289B492500C2CE12 /* ActivityRecView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityRecView.h; sourceTree = "<group>"; };
-		13E20A45289B492500C2CE12 /* ActivityRecView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityRecView.m; sourceTree = "<group>"; };
+		13E20A44289B492500C2CE12 /* AXActivityRecView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXActivityRecView.h; sourceTree = "<group>"; };
+		13E20A45289B492500C2CE12 /* AXActivityRecView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXActivityRecView.m; sourceTree = "<group>"; };
 		212AFF4A3BDE66FD65861084 /* Pods-CapstoneProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectTests/Pods-CapstoneProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BF5F8F5A7A1B8A63FA53C7F /* Pods-CapstoneProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectUITests/Pods-CapstoneProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		42A3D1D3588070588CAA87E2 /* Pods-CapstoneProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectTests/Pods-CapstoneProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,26 +61,26 @@
 		66950B703E5F785384E3108A /* Pods_CapstoneProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89366882C845FE22C63CE62D /* Pods_CapstoneProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFE21B6E3067FA05C51E5E7 /* Pods-CapstoneProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectUITests/Pods-CapstoneProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
-		F576C0DC287F46E300C93523 /* ActivityRecViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityRecViewController.h; sourceTree = "<group>"; };
-		F576C0DD287F46E300C93523 /* ActivityRecViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityRecViewController.m; sourceTree = "<group>"; };
-		F576C0E52880E0C600C93523 /* ActivityRecommendation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityRecommendation.h; sourceTree = "<group>"; };
-		F576C0E62880E0C600C93523 /* ActivityRecommendation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityRecommendation.m; sourceTree = "<group>"; };
-		F576C0E82880E76100C93523 /* AddActivityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddActivityViewController.h; sourceTree = "<group>"; };
-		F576C0E92880E76100C93523 /* AddActivityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddActivityViewController.m; sourceTree = "<group>"; };
-		F576C0EB2880EFFA00C93523 /* DisplayActivityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayActivityViewController.h; sourceTree = "<group>"; };
-		F576C0EC2880EFFA00C93523 /* DisplayActivityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayActivityViewController.m; sourceTree = "<group>"; };
-		F576C0F12880F2AC00C93523 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
-		F576C0F22880F2AC00C93523 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		F576C0F42882197100C93523 /* MoodDetection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoodDetection.h; sourceTree = "<group>"; };
-		F576C0F52882197100C93523 /* MoodDetection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoodDetection.m; sourceTree = "<group>"; };
-		F576C0FA288731A100C93523 /* ActivityRecommendationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityRecommendationTableViewCell.h; sourceTree = "<group>"; };
-		F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityRecommendationTableViewCell.m; sourceTree = "<group>"; };
-		F576C0FD289442A700C93523 /* ChangeEmotionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeEmotionViewController.h; sourceTree = "<group>"; };
-		F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeEmotionViewController.m; sourceTree = "<group>"; };
-		F576C100289B1EA800C93523 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		F576C101289B1EA800C93523 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		F576C109289DE06F00C93523 /* RecommendationEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendationEngine.h; sourceTree = "<group>"; };
-		F576C10A289DE06F00C93523 /* RecommendationEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendationEngine.m; sourceTree = "<group>"; };
+		F576C0DC287F46E300C93523 /* AXActivityRecViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXActivityRecViewController.h; sourceTree = "<group>"; };
+		F576C0DD287F46E300C93523 /* AXActivityRecViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXActivityRecViewController.m; sourceTree = "<group>"; };
+		F576C0E52880E0C600C93523 /* AXActivityRecommendation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXActivityRecommendation.h; sourceTree = "<group>"; };
+		F576C0E62880E0C600C93523 /* AXActivityRecommendation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXActivityRecommendation.m; sourceTree = "<group>"; };
+		F576C0E82880E76100C93523 /* AXAddActivityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXAddActivityViewController.h; sourceTree = "<group>"; };
+		F576C0E92880E76100C93523 /* AXAddActivityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXAddActivityViewController.m; sourceTree = "<group>"; };
+		F576C0EB2880EFFA00C93523 /* AXDisplayActivityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXDisplayActivityViewController.h; sourceTree = "<group>"; };
+		F576C0EC2880EFFA00C93523 /* AXDisplayActivityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXDisplayActivityViewController.m; sourceTree = "<group>"; };
+		F576C0F12880F2AC00C93523 /* AXSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXSignUpViewController.h; sourceTree = "<group>"; };
+		F576C0F22880F2AC00C93523 /* AXSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXSignUpViewController.m; sourceTree = "<group>"; };
+		F576C0F42882197100C93523 /* AXMoodDetection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMoodDetection.h; sourceTree = "<group>"; };
+		F576C0F52882197100C93523 /* AXMoodDetection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMoodDetection.m; sourceTree = "<group>"; };
+		F576C0FA288731A100C93523 /* AXActivityRecommendationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXActivityRecommendationTableViewCell.h; sourceTree = "<group>"; };
+		F576C0FB288731A100C93523 /* AXActivityRecommendationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXActivityRecommendationTableViewCell.m; sourceTree = "<group>"; };
+		F576C0FD289442A700C93523 /* AXChangeEmotionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXChangeEmotionViewController.h; sourceTree = "<group>"; };
+		F576C0FE289442A700C93523 /* AXChangeEmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXChangeEmotionViewController.m; sourceTree = "<group>"; };
+		F576C100289B1EA800C93523 /* AXProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXProfileViewController.h; sourceTree = "<group>"; };
+		F576C101289B1EA800C93523 /* AXProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXProfileViewController.m; sourceTree = "<group>"; };
+		F576C109289DE06F00C93523 /* AXRecommendationEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXRecommendationEngine.h; sourceTree = "<group>"; };
+		F576C10A289DE06F00C93523 /* AXRecommendationEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXRecommendationEngine.m; sourceTree = "<group>"; };
 		F5D03195287C8F520065FDF3 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D03198287C8F520065FDF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F5D03199287C8F520065FDF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -96,8 +96,8 @@
 		F5D031BA287C8F530065FDF3 /* CapstoneProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapstoneProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D031BE287C8F530065FDF3 /* CapstoneProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapstoneProjectUITests.m; sourceTree = "<group>"; };
 		F5D031C0287C8F530065FDF3 /* CapstoneProjectUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapstoneProjectUITestsLaunchTests.m; sourceTree = "<group>"; };
-		F5D031CD287C9A6B0065FDF3 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		F5D031CE287C9A6B0065FDF3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F5D031CD287C9A6B0065FDF3 /* AXLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXLoginViewController.h; sourceTree = "<group>"; };
+		F5D031CE287C9A6B0065FDF3 /* AXLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXLoginViewController.m; sourceTree = "<group>"; };
 		F5D031D0287C9D270065FDF3 /* AXHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXHomeViewController.h; sourceTree = "<group>"; };
 		F5D031D1287C9D270065FDF3 /* AXHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXHomeViewController.m; sourceTree = "<group>"; };
 		F6472ECC89E77248B87604AC /* Pods-CapstoneProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,24 +158,24 @@
 		F576C0EF2880F1B000C93523 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F576C0FD289442A700C93523 /* ChangeEmotionViewController.h */,
-				F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */,
-				F576C0EB2880EFFA00C93523 /* DisplayActivityViewController.h */,
-				F576C0EC2880EFFA00C93523 /* DisplayActivityViewController.m */,
-				F576C100289B1EA800C93523 /* ProfileViewController.h */,
-				F576C101289B1EA800C93523 /* ProfileViewController.m */,
-				F576C0F12880F2AC00C93523 /* SignUpViewController.h */,
-				F576C0F22880F2AC00C93523 /* SignUpViewController.m */,
-				F576C0DC287F46E300C93523 /* ActivityRecViewController.h */,
-				F576C0DD287F46E300C93523 /* ActivityRecViewController.m */,
-				F576C0E82880E76100C93523 /* AddActivityViewController.h */,
-				F576C0E92880E76100C93523 /* AddActivityViewController.m */,
+				F576C0FD289442A700C93523 /* AXChangeEmotionViewController.h */,
+				F576C0FE289442A700C93523 /* AXChangeEmotionViewController.m */,
+				F576C0EB2880EFFA00C93523 /* AXDisplayActivityViewController.h */,
+				F576C0EC2880EFFA00C93523 /* AXDisplayActivityViewController.m */,
+				F576C100289B1EA800C93523 /* AXProfileViewController.h */,
+				F576C101289B1EA800C93523 /* AXProfileViewController.m */,
+				F576C0F12880F2AC00C93523 /* AXSignUpViewController.h */,
+				F576C0F22880F2AC00C93523 /* AXSignUpViewController.m */,
+				F576C0DC287F46E300C93523 /* AXActivityRecViewController.h */,
+				F576C0DD287F46E300C93523 /* AXActivityRecViewController.m */,
+				F576C0E82880E76100C93523 /* AXAddActivityViewController.h */,
+				F576C0E92880E76100C93523 /* AXAddActivityViewController.m */,
 				F5D031D0287C9D270065FDF3 /* AXHomeViewController.h */,
 				F5D031D1287C9D270065FDF3 /* AXHomeViewController.m */,
-				F5D031CD287C9A6B0065FDF3 /* LoginViewController.h */,
-				F5D031CE287C9A6B0065FDF3 /* LoginViewController.m */,
-				13E20A44289B492500C2CE12 /* ActivityRecView.h */,
-				13E20A45289B492500C2CE12 /* ActivityRecView.m */,
+				F5D031CD287C9A6B0065FDF3 /* AXLoginViewController.h */,
+				F5D031CE287C9A6B0065FDF3 /* AXLoginViewController.m */,
+				13E20A44289B492500C2CE12 /* AXActivityRecView.h */,
+				13E20A45289B492500C2CE12 /* AXActivityRecView.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -183,12 +183,12 @@
 		F576C0F02880F1DF00C93523 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F576C109289DE06F00C93523 /* RecommendationEngine.h */,
-				F576C10A289DE06F00C93523 /* RecommendationEngine.m */,
-				F576C0E52880E0C600C93523 /* ActivityRecommendation.h */,
-				F576C0E62880E0C600C93523 /* ActivityRecommendation.m */,
-				F576C0F42882197100C93523 /* MoodDetection.h */,
-				F576C0F52882197100C93523 /* MoodDetection.m */,
+				F576C109289DE06F00C93523 /* AXRecommendationEngine.h */,
+				F576C10A289DE06F00C93523 /* AXRecommendationEngine.m */,
+				F576C0E52880E0C600C93523 /* AXActivityRecommendation.h */,
+				F576C0E62880E0C600C93523 /* AXActivityRecommendation.m */,
+				F576C0F42882197100C93523 /* AXMoodDetection.h */,
+				F576C0F52882197100C93523 /* AXMoodDetection.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,8 +229,8 @@
 				F5D0319B287C8F520065FDF3 /* SceneDelegate.h */,
 				F5D0319C287C8F520065FDF3 /* SceneDelegate.m */,
 				F576C0EF2880F1B000C93523 /* ViewControllers */,
-				F576C0FA288731A100C93523 /* ActivityRecommendationTableViewCell.h */,
-				F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */,
+				F576C0FA288731A100C93523 /* AXActivityRecommendationTableViewCell.h */,
+				F576C0FB288731A100C93523 /* AXActivityRecommendationTableViewCell.m */,
 			);
 			path = CapstoneProject;
 			sourceTree = "<group>";
@@ -466,20 +466,20 @@
 			files = (
 				F5D0319A287C8F520065FDF3 /* AppDelegate.m in Sources */,
 				F5D031AB287C8F530065FDF3 /* main.m in Sources */,
-				F576C0DE287F46E300C93523 /* ActivityRecViewController.m in Sources */,
-				F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */,
-				F576C102289B1EA800C93523 /* ProfileViewController.m in Sources */,
-				F576C0EA2880E76100C93523 /* AddActivityViewController.m in Sources */,
-				F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */,
+				F576C0DE287F46E300C93523 /* AXActivityRecViewController.m in Sources */,
+				F576C0FC288731A100C93523 /* AXActivityRecommendationTableViewCell.m in Sources */,
+				F576C102289B1EA800C93523 /* AXProfileViewController.m in Sources */,
+				F576C0EA2880E76100C93523 /* AXAddActivityViewController.m in Sources */,
+				F576C0FF289442A700C93523 /* AXChangeEmotionViewController.m in Sources */,
 				F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */,
 				F5D031D2287C9D270065FDF3 /* AXHomeViewController.m in Sources */,
-				F5D031CF287C9A6B0065FDF3 /* LoginViewController.m in Sources */,
-				F576C0F62882197100C93523 /* MoodDetection.m in Sources */,
-				F576C0ED2880EFFA00C93523 /* DisplayActivityViewController.m in Sources */,
-				F576C10B289DE06F00C93523 /* RecommendationEngine.m in Sources */,
-				F576C0F32880F2AC00C93523 /* SignUpViewController.m in Sources */,
-				13E20A46289B492500C2CE12 /* ActivityRecView.m in Sources */,
-				F576C0E72880E0C600C93523 /* ActivityRecommendation.m in Sources */,
+				F5D031CF287C9A6B0065FDF3 /* AXLoginViewController.m in Sources */,
+				F576C0F62882197100C93523 /* AXMoodDetection.m in Sources */,
+				F576C0ED2880EFFA00C93523 /* AXDisplayActivityViewController.m in Sources */,
+				F576C10B289DE06F00C93523 /* AXRecommendationEngine.m in Sources */,
+				F576C0F32880F2AC00C93523 /* AXSignUpViewController.m in Sources */,
+				13E20A46289B492500C2CE12 /* AXActivityRecView.m in Sources */,
+				F576C0E72880E0C600C93523 /* AXActivityRecommendation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

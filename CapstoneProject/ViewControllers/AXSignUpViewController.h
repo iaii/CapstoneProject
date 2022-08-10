@@ -1,5 +1,5 @@
 //
-//  DisplayActivityViewController.h
+//  SignUpViewController.h
 //  CapstoneProject
 //
 //  Created by Apoorva Chilukuri on 7/14/22.
@@ -9,9 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DisplayActivityViewController : UIViewController
-
-@property (strong, nonatomic) NSString *activity;
+@interface AXSignUpViewController : UIViewController
 
 @end
 

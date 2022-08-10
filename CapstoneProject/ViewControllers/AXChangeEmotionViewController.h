@@ -10,7 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChangeEmotionViewController : UIViewController
+@interface AXChangeEmotionViewController : UIViewController
+
 @property (strong, nonatomic) NSArray *activites;
 @property (strong, nonatomic) NSString *activityName;
 @property (strong, nonatomic) NSString *activityObjectId;

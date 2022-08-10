@@ -5,12 +5,12 @@
 //  Created by Apoorva Chilukuri on 8/3/22.
 //
 
-#import "ProfileViewController.h"
+#import "AXProfileViewController.h"
 #import "FSCalendar.h"
 #import "FSCalendarCalculator.h"
 #import <Parse/Parse.h>
 
-@interface ProfileViewController () <UICollectionViewDataSource,UIGestureRecognizerDelegate>
+@interface AXProfileViewController () <UICollectionViewDataSource,UIGestureRecognizerDelegate>
 
 @property (weak , nonatomic) FSCalendar *calendar;
 @property (strong, nonatomic) NSCalendar *gregorian;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation ProfileViewController
+@implementation AXProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

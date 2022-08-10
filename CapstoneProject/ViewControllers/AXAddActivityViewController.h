@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.h
+//  CustomeActivityViewController.h
 //  CapstoneProject
 //
 //  Created by Apoorva Chilukuri on 7/14/22.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SignUpViewController : UIViewController
+@interface AXAddActivityViewController : UIViewController
 
 @end
 

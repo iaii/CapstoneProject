@@ -6,14 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ActivityRecommendation.h"
-#import "ActivityRecommendation.h"
+#import "AXActivityRecommendation.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ActivityRecommendationTableViewCell : UITableViewCell
+@interface AXActivityRecommendationTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) ActivityRecommendation *acitivityRecommendation;
+@property (strong, nonatomic) AXActivityRecommendation *acitivityRecommendation;
 @property (weak, nonatomic) IBOutlet UILabel *activityRecommendationText;
 @property (nonatomic) BOOL like;
 @property (nonatomic) BOOL dislike;
@@ -25,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)didTapDislikeButton:(id)sender;
 - (IBAction)didTapSelectActivity:(id)sender;
 
-- (void)setUpActivity:(NSString *) activity;
+- (void)setUpActivity:(NSString *)activity;
 
 @end
 

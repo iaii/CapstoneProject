@@ -5,15 +5,16 @@
 //  Created by Apoorva Chilukuri on 7/13/22.
 //
 
-#import "ActivityRecViewController.h"
-#import "ActivityRecommendationTableViewCell.h"
-#import "ActivityRecommendation.h"
-#import "MoodDetection.h"
-#import "ChangeEmotionViewController.h"
-#import "DisplayActivityViewController.h"
+#import "AXActivityRecViewController.h"
+#import "AXActivityRecommendationTableViewCell.h"
+#import "AXActivityRecommendation.h"
+#import "AXMoodDetection.h"
+#import "AXChangeEmotionViewController.h"
+#import "AXDisplayActivityViewController.h"
 #import <Parse/Parse.h>
+#import "AXRecommendationEngine.h"
 
-@interface ActivityRecViewController ()
+@interface AXActivityRecViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *firstMood;
@@ -21,17 +22,18 @@
 @property (strong, nonatomic) NSString *thirdMood;
 @property (weak, nonatomic) IBOutlet UILabel *headingText;
 @property (strong, nonatomic) NSMutableArray *rainDropsArray;
-@property (strong, nonatomic) IBOutlet ActivityRecView *mainView;
+@property (strong, nonatomic) IBOutlet AXActivityRecView *mainView;
 @property (strong, nonatomic) UILabel *rainDropScoreLabel;
 @property (strong, nonatomic) NSNumber *rainDropCounter;
 @property (strong, nonatomic) NSNumber *rainDropArrayCount;
+
 - (IBAction)didTapChangeEmotion:(id)sender;
 - (IBAction)didTapAddAcitivity:(id)sender;
 - (IBAction)didTapSelectActivity:(id)sender;
 
 @end
 
-@implementation ActivityRecViewController
+@implementation AXActivityRecViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +49,9 @@
     self.thirdMood = [self.moodDectetor thirdMood];
 
     self.headingText.text = @"Recommended activities";
+    
+    AXRecommendationEngine *rec = [[AXRecommendationEngine alloc] init];
+    rec.moods = @[self.firstMood, self.secondMood, self.thirdMood];
     
     [self loadAnimations];
     [self queryActivities: @"firstEmotionTag" : self.firstMood : @4];
@@ -166,7 +171,7 @@
     }
 }
 
--(BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
+- (BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
     for (NSInteger i = self.rainDropsArray.count - 1; i >= 0; i--) {
         UIImageView *imageView = self.rainDropsArray[i][0];
         if ([imageView.layer.presentationLayer hitTest:point] && [self.rainDropsArray[i][1]  isEqual: @0]) {
@@ -194,7 +199,7 @@
     return false;
 }
 
--(void)changeSadToHappyAnimation {
+- (void)changeSadToHappyAnimation {
     
     UIImageView *rainbowImage = [[UIImageView alloc] init];
     
@@ -237,9 +242,9 @@
     }];
 }
 
--(void)queryActivities:(NSString *)columnName : (NSString *)moodName : (NSNumber *)score {
+- (void)queryActivities:(NSString *)columnName : (NSString *)moodName : (NSNumber *)score {
     
-    PFQuery *query = [ActivityRecommendation query];
+    PFQuery *query = [AXActivityRecommendation query];
     [query whereKey:columnName equalTo: moodName];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
@@ -260,12 +265,8 @@
     }];
 }
 
--(void)displayTopRankedActivities {
-    
-}
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ActivityRecommendationTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
+    AXActivityRecommendationTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
     
     NSArray *activity = _recActivities[indexPath.row];
     [cell setUpActivity: activity[1]];
@@ -281,11 +282,11 @@
     return 1;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    DisplayActivityViewController *displayActivityViewController = [storyboard instantiateViewControllerWithIdentifier:@"DisplayActivityViewController"];
+    AXDisplayActivityViewController *displayActivityViewController = [storyboard instantiateViewControllerWithIdentifier:@"DisplayActivityViewController"];
     
     NSArray *activity = self.recActivities[indexPath.row];
     displayActivityViewController.activity = activity[1];
@@ -298,12 +299,13 @@
 
 - (IBAction)didTapAddAcitivity:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.view.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"CustomeActivityViewController"];
+    AXChangeEmotionViewController *customeActivityViewController = [storyboard instantiateViewControllerWithIdentifier:@"CustomeActivityViewController"];
+    [self.navigationController pushViewController:customeActivityViewController animated:YES];
 }
 
 - (IBAction)didTapChangeEmotion:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ChangeEmotionViewController *changeEmotionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChangeEmotionViewController"];
+    AXChangeEmotionViewController *changeEmotionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChangeEmotionViewController"];
     
     UITableViewCell *cell = sender;
     NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];

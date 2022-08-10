@@ -5,26 +5,30 @@
 //  Created by Apoorva Chilukuri on 7/14/22.
 //
 
-#import "SignUpViewController.h"
+#import "AXSignUpViewController.h"
 #import <Parse/Parse.h>
 
-@interface SignUpViewController ()
-- (IBAction)didTapSignUp:(id)sender;
+@interface AXSignUpViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *fullNameField;
 
+- (IBAction)didTapSignUp:(id)sender;
+
 @end
 
-@implementation SignUpViewController
+@implementation AXSignUpViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
 }
+
 - (IBAction)didTapSignUp:(id)sender {
-    if([self.usernameField.text isEqual:@""]){
+    if (self.usernameField.text.length == 0) {
         [self loginAlert];
-    }else{
+    } else {
         // initialize a user object
         PFUser *newUser = [PFUser user];
         
@@ -45,7 +49,7 @@
     }
 }
 
--(void)loginAlert{
+-(void)loginAlert {
     [super viewDidLoad];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Title"
                                                                    message:@"Message"
@@ -73,7 +77,5 @@
     [self presentViewController:alert animated:YES completion:^{
         // optional code for what happens after the alert controller has finished presenting
     }];
-    
 }
-
 @end

@@ -11,11 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ActivityRecViewDelegate <NSObject>
 
--(BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event;
+- (BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event;
 
 @end
 
-@interface ActivityRecView : UIView
+@interface AXActivityRecView : UIView
 
 @property (weak, nonatomic) id<ActivityRecViewDelegate> delegate;
 

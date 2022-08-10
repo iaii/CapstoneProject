@@ -5,11 +5,11 @@
 //  Created by Sanasar Kolyan on 8/3/22.
 //
 
-#import "ActivityRecView.h"
+#import "AXActivityRecView.h"
 
-@implementation ActivityRecView
+@implementation AXActivityRecView
 
--(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     if ([self.delegate activityRecViewDidhitTest:point withEvent:event]) {
         return self;
     }

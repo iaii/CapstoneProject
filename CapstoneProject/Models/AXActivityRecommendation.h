@@ -10,12 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ActivityRecommendation: PFObject <PFSubclassing>
+@interface AXActivityRecommendation: PFObject <PFSubclassing>
 
 @property (strong, nonatomic) NSString *activity;
 @property (strong, nonatomic) NSString *mood;
 
-+ (void) postNewActivity: (NSString * _Nullable )activity withMood: (NSString * _Nullable )mood withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void)postNewActivity:(NSString * _Nullable )activity
+                   mood:(NSString * _Nullable)mood
+             completion:(PFBooleanResultBlock  _Nullable)completion;
 
 @end
 
