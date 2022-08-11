@@ -30,6 +30,7 @@
     self.moodsToChooseFrom = @[@"Happy", @"Sad", @"Angry", @"Fear", @"Surprise"];
 }
 
+#pragma picker methods
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
@@ -46,6 +47,7 @@
     self.chosenMood = self.moodsToChooseFrom[row];
 }
 
+#pragma private methods
 - (IBAction)didTapAddActivity:(id)sender {
     if (![self.chosenMood isEqualToString:@""] && ![self.costumeAcitvityInput.text isEqualToString:@""]) {
         [AXActivityRecommendation postNewActivity:self.costumeAcitvityInput.text

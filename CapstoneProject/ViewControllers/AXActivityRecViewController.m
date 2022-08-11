@@ -40,7 +40,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.rowHeight = 125;
+    self.tableView.rowHeight = 50;
     self.mainView.delegate = self;
     self.recActivities = [[NSMutableArray alloc] init];
     
@@ -59,6 +59,7 @@
     [self queryActivities: @"thridEmotionTag" : self.thirdMood : @2];
 }
 
+#pragma animations
 -(void) loadAnimations {
     if([self.firstMood isEqualToString:@"Happy"]) {
         for(int i = 0; i < 100; i++){
@@ -242,6 +243,7 @@
     }];
 }
 
+#pragma private methods
 - (void)queryActivities:(NSString *)columnName : (NSString *)moodName : (NSNumber *)score {
     
     PFQuery *query = [AXActivityRecommendation query];
@@ -265,6 +267,27 @@
     }];
 }
 
+- (IBAction)didTapAddAcitivity:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AXChangeEmotionViewController *customeActivityViewController = [storyboard instantiateViewControllerWithIdentifier:@"CustomeActivityViewController"];
+    [self.navigationController pushViewController:customeActivityViewController animated:YES];
+}
+
+- (IBAction)didTapChangeEmotion:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AXChangeEmotionViewController *changeEmotionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChangeEmotionViewController"];
+    
+    UITableViewCell *cell = sender;
+    NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
+    NSArray *activity = self.recActivities[myIndexPath.row];
+    changeEmotionViewController.activityName = activity[1];
+    changeEmotionViewController.activityObjectId = activity[0];
+    changeEmotionViewController.userObject = activity[3];
+    
+    [self.navigationController pushViewController:changeEmotionViewController animated:YES];
+}
+
+#pragma UITableView Methods
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     AXActivityRecommendationTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
     
@@ -292,29 +315,6 @@
     displayActivityViewController.activity = activity[1];
     
     [self.navigationController pushViewController:displayActivityViewController animated:YES];
-}
-
-- (IBAction)didTapSelectActivity:(id)sender {
-}
-
-- (IBAction)didTapAddAcitivity:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AXChangeEmotionViewController *customeActivityViewController = [storyboard instantiateViewControllerWithIdentifier:@"CustomeActivityViewController"];
-    [self.navigationController pushViewController:customeActivityViewController animated:YES];
-}
-
-- (IBAction)didTapChangeEmotion:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AXChangeEmotionViewController *changeEmotionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChangeEmotionViewController"];
-    
-    UITableViewCell *cell = sender;
-    NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
-    NSArray *activity = self.recActivities[myIndexPath.row];
-    changeEmotionViewController.activityName = activity[1];
-    changeEmotionViewController.activityObjectId = activity[0];
-    changeEmotionViewController.userObject = activity[3];
-    
-    [self.navigationController pushViewController:changeEmotionViewController animated:YES];
 }
 
 @end

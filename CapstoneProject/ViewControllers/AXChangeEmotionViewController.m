@@ -34,6 +34,7 @@
     self.chosenMood = self.moodsToChooseFrom[0];
 }
 
+#pragma picker methods
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
@@ -50,6 +51,7 @@
     self.chosenMood = self.moodsToChooseFrom[row];
 }
 
+#pragma private methods
 - (IBAction)didTapChangeEmotionButton:(id)sender {
     [self changeFirstEmotionInDatabase];
     [self.navigationController popViewControllerAnimated:YES];
