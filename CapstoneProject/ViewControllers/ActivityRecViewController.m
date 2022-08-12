@@ -5,12 +5,14 @@
 //  Created by Apoorva Chilukuri on 7/13/22.
 //
 
+
+//// OLDDD
+
 #import "ActivityRecViewController.h"
 #import "ActivityRecommendationTableViewCell.h"
 #import "ActivityRecommendation.h"
 #import "MoodDetection.h"
 #import "ChangeEmotionViewController.h"
-#import "RaindropsUIImageView.h"
 
 #import <Parse/Parse.h>
 
@@ -20,6 +22,7 @@
 @property (strong, nonatomic) NSString *mood;
 @property (weak, nonatomic) IBOutlet UILabel *headingText;
 @property (strong, nonatomic) NSMutableArray *rainDropsArray;
+@property (strong, nonatomic) IBOutlet ActivityRecView *mainView;
 - (IBAction)didTapChangeEmotion:(id)sender;
 - (IBAction)didTapAddAcitivity:(id)sender;
 - (IBAction)didTapSelectActivity:(id)sender;
@@ -93,7 +96,7 @@
     [tapRecognizer setDelegate:self];
 
     for(int i = 0; i < 15; i++){
-        RaindropsUIImageView *sadImage = [[RaindropsUIImageView alloc] init];
+        UIImageView *sadImage = [[UIImageView alloc] init];
         CGRect imageframe = sadImage.frame;
         
         sadImage.userInteractionEnabled = YES;
@@ -143,6 +146,19 @@
         [self.rainDropsArray addObject:rainDropImageAndStatus];
     }
 }
+
+- (BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    for (NSInteger i = self.rainDropsArray.count-1; i>=0; i--) {
+        UIImageView *imageView = self.rainDropsArray[i][0];
+        if ([imageView.layer.presentationLayer hitTest:point]) {
+            
+            NSLog(@"did hit %li", (long)i);
+            return true;
+        }
+    }
+    return false;
+}
+
 
 -(void)tapped:(UITapGestureRecognizer *) gesture {
     for (int i = 0; i < self.rainDropsArray.count; i++) {
