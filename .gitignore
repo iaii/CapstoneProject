@@ -1,5 +1,6 @@
 .CapstoneProjectTests.m
 .CapstoneProjectUITests.m
 .CapstoneProjectUITestsLaunchTests.m
+.DS_Store
 Pods/.gitignore
 Info.plist
