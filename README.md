@@ -45,6 +45,7 @@ Content-based filtering is a type of Machine Learning recommender system algorit
 
 Although there are some drawbacks to this design, the pros of this design far outweigh the fact that the user might be slightly inconvenienced because they need to provide more data and avoid implementing more complex ML algorithms. More importantly, implementing a content-based algorithm in comparison to a collaborative algorithm is better suited for this application as my model does not need any data about other users (which would be very hard to manually make hundreds of test users) since the recommendations are specific to this user. As a result, it is a lot easier to scale my algorithm that recommends niche activities that very few other users are interested in.
 
+More infomation: https://docs.google.com/document/d/1G2D86viD2N7oJD8tYDsEopoVEnaMv5hFkadu33NsdPc/edit#
 
 ## Complex Feature #2 - Animations
 ### Sad Animation
