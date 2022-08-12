@@ -29,16 +29,17 @@ The following **optional** features are implemented:
 - [ ] Run your app on a real device.
 
 
-# Complext Feature - Content-based Filtering
+## Complext Feature - Content-based Filtering
 ### What is Content-Based Filtering? - recommender system algorithm
-Content-based filtering is a type of recommender system algorithm that attempts to make recommendations based on user preferences and product features (in my case it would be activity features).
+Content-based filtering is a type of Machine Learning recommender system algorithm that attempts to make recommendations based on user preferences and product features (in my case it would be activity features).
 
-# Summary: I have 2 databases:
-User Database: stores basic information about the user such as their age and what activities they have previously selected.
-Activity Database:  Stores all the potential activities that could be recommended to the user. Each activity has associated features that helps in determining which activity the user would like the best
+### Database Design:
+- User Database: stores basic information about the user such as their age and what activities they have previously selected.
+- Activity Database:  Stores all the potential activities that could be recommended to the user. Each activity has associated features that helps in determining which activity the user would like the best
 
-# User needs to input all the data if they want to add a new activity
-Does not take into account how other users have responded to these activities. This can be addressed by implementing Collaborative Filtering, a Machine Learning algorithm.
-Although there are some drawbacks to this design, the pros of this design far outweigh the fact that the user might be slightly inconvenienced because they need to provide more data and avoid implementing more complex ML algorithms. More importantly, implementing a content-based algorithm in comparison to a collaborative algorithm is better suited for this application as my model does not need any data about other users (which would be very hard to manually make hundreds of test users) since the recommendations are specific to this user. As a result, it is a lot easier to scale my algorithm that recommends niche activities that very few other users are interested in [3].
+### Drawbacks to the design
+- User needs to input all the data if they want to add a new activity
+- Does not take into account how other users have responded to these activities. This can be addressed by implementing Collaborative Filtering, a Machine Learning algorithm.
 
+Although there are some drawbacks to this design, the pros of this design far outweigh the fact that the user might be slightly inconvenienced because they need to provide more data and avoid implementing more complex ML algorithms. More importantly, implementing a content-based algorithm in comparison to a collaborative algorithm is better suited for this application as my model does not need any data about other users (which would be very hard to manually make hundreds of test users) since the recommendations are specific to this user. As a result, it is a lot easier to scale my algorithm that recommends niche activities that very few other users are interested in.
 
