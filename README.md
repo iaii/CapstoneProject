@@ -7,25 +7,24 @@ Time spent: 240 hours spent in total
 ## User Stories
 
 - [x] User sees an app icon on the home screen and a styled launch screen.
-- [x] User input infomation about how they are feeling and how their day was. Emotion tags would be 
-- [x] Depending on the inf.
-- [x] User sees a loading state while waiting for the movies API.
-- [x] User can pull to refresh the movie list.
+- [x] User input infomation about how they are feeling and how their day was. The mood will be determined from the text given 
+- [x] Recommendations on what activity they should do will be provided 
+- [x] User can select what activity they want to
+- [x] The selected activity will be saved and displayed in a calendar view
 - [x] User sees an error message when there's a networking error.
 - [x] User can tap a tab bar button to view a grid layout of Movie Posters using a CollectionView.
 
-The following **optional** features are implemented:
+MetaU Expectations:
 
-- [ ] User can tap a poster in the collection view to see a detail screen of that movie
-- [ ] User can search for a movie.
-- [ ] All images fade in as they are loading.
-- [ ] User can view the large movie poster by tapping on a cell.
-- [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
-- [ ] Customize the selection effect of the cell.
-- [ ] Customize the navigation bar.
-- [ ] Customize the UI.
-- [ ] Run your app on a real device.
-
+- [x] User can sign up, login, logout, and have persistant login 
+- [x] You can sign up with a new user profile
+- [x] Your app provides multiple opportunities for you to overcome difficult/ambiguous technical problems (more below)
+- [x] Your app interacts with a database (e.g. Parse).
+- [x] API integration.
+- [x] Your app has multiple views
+- [x] Your app uses at least one gesture
+- [x] Your app incorporates at least one external library to add visual polish
+- [x] Your app uses at least one animation (e.g. fade in/out, e.g. animating a view growing and shrinking)
 
 ## Complext Feature - Content-based Filtering Recommendation System
 ### What is Content-Based Filtering? - recommender system algorithm
@@ -42,7 +41,7 @@ Content-based filtering is a type of Machine Learning recommender system algorit
 Although there are some drawbacks to this design, the pros of this design far outweigh the fact that the user might be slightly inconvenienced because they need to provide more data and avoid implementing more complex ML algorithms. More importantly, implementing a content-based algorithm in comparison to a collaborative algorithm is better suited for this application as my model does not need any data about other users (which would be very hard to manually make hundreds of test users) since the recommendations are specific to this user. As a result, it is a lot easier to scale my algorithm that recommends niche activities that very few other users are interested in.
 
 
-## Complex Feature 2 - Animations
+## Complex Feature #2 - Animations
 ### Sad Animation
 - If the primary emotion is sad, when selecting what activity the user wants to do raindrops fall.
 - The user can catch the raindrops by tapping on them
