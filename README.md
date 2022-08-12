@@ -12,7 +12,8 @@ Time spent: 240 hours spent in total
 - [x] User can select what activity they want to
 - [x] The selected activity will be saved and displayed in a calendar view
 - [x] User sees an error message when there's a networking error.
-- [x] User can tap a tab bar button to view a grid layout of Movie Posters using a CollectionView.
+- [x] User can add thier own custome activities for any emotion.
+- [x] User change the associated emotion with the activity 
 
 MetaU Expectations:
 
@@ -33,6 +34,10 @@ Content-based filtering is a type of Machine Learning recommender system algorit
 ### Database Design
 - User Database: stores basic information about the user such as their age and what activities they have previously selected.
 - Activity Database:  Stores all the potential activities that could be recommended to the user. Each activity has associated features that helps in determining which activity the user would like the best
+
+<img width="614" alt="image" src="https://user-images.githubusercontent.com/19788746/184416114-15982827-247e-4556-8403-01ef0df43ce0.png">
+<img width="605" alt="image" src="https://user-images.githubusercontent.com/19788746/184416213-48177b9f-844a-4f85-8eb5-61f1236fec0e.png">
+<img width="579" alt="image" src="https://user-images.githubusercontent.com/19788746/184416306-c63f1df6-6343-4958-bbfe-daadd3a1b9ae.png">
 
 ### Drawbacks to the design + How they have been addressed
 - User needs to input all the data if they want to add a new activity
