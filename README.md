@@ -29,8 +29,8 @@ The following **optional** features are implemented:
 - [ ] Run your app on a real device.
 
 
-## Complext Feature - Content-based Filtering
-# What is Content-Based Filtering? - recommender system algorithm
+# Complext Feature - Content-based Filtering
+### What is Content-Based Filtering? - recommender system algorithm
 Content-based filtering is a type of recommender system algorithm that attempts to make recommendations based on user preferences and product features (in my case it would be activity features).
 
 # Summary: I have 2 databases:
