@@ -57,3 +57,13 @@ Although there are some drawbacks to this design, the pros of this design far ou
 - Each animation has a model that stores random values for thier positions
 - All the animations are removed at the end to increase effieciency
 
+
+https://user-images.githubusercontent.com/19788746/184415322-2633d41e-71ca-45b3-881d-b6e61a9b30a6.mp4
+
+
+
+
+
+https://user-images.githubusercontent.com/19788746/184415305-9a281340-d101-4612-b218-3abeacd0acc9.mp4
+
+
