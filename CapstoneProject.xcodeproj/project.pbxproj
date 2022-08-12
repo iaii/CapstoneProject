@@ -20,7 +20,6 @@
 		F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */; };
 		F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */; };
 		F576C102289B1EA800C93523 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C101289B1EA800C93523 /* ProfileViewController.m */; };
-		F576C10B289DE06F00C93523 /* RecommendationEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C10A289DE06F00C93523 /* RecommendationEngine.m */; };
 		F5D0319A287C8F520065FDF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D03199287C8F520065FDF3 /* AppDelegate.m */; };
 		F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0319C287C8F520065FDF3 /* SceneDelegate.m */; };
 		F5D031A3287C8F520065FDF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D031A1287C8F520065FDF3 /* Main.storyboard */; };
@@ -79,8 +78,6 @@
 		F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeEmotionViewController.m; sourceTree = "<group>"; };
 		F576C100289B1EA800C93523 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		F576C101289B1EA800C93523 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		F576C109289DE06F00C93523 /* RecommendationEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendationEngine.h; sourceTree = "<group>"; };
-		F576C10A289DE06F00C93523 /* RecommendationEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendationEngine.m; sourceTree = "<group>"; };
 		F5D03195287C8F520065FDF3 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D03198287C8F520065FDF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F5D03199287C8F520065FDF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -166,6 +163,8 @@
 				F576C101289B1EA800C93523 /* ProfileViewController.m */,
 				F576C0F12880F2AC00C93523 /* SignUpViewController.h */,
 				F576C0F22880F2AC00C93523 /* SignUpViewController.m */,
+				F576C106289B563200C93523 /* ActivityRecView.h */,
+				F576C107289B563200C93523 /* ActivityRecView.m */,
 				F576C0DC287F46E300C93523 /* ActivityRecViewController.h */,
 				F576C0DD287F46E300C93523 /* ActivityRecViewController.m */,
 				F576C0E82880E76100C93523 /* AddActivityViewController.h */,
@@ -470,6 +469,7 @@
 				F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */,
 				F576C102289B1EA800C93523 /* ProfileViewController.m in Sources */,
 				F576C0EA2880E76100C93523 /* AddActivityViewController.m in Sources */,
+				F576C108289B563200C93523 /* ActivityRecView.m in Sources */,
 				F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */,
 				F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */,
 				F5D031D2287C9D270065FDF3 /* AXHomeViewController.m in Sources */,

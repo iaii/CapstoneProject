@@ -5,12 +5,14 @@
 //  Created by Apoorva Chilukuri on 7/13/22.
 //
 
+
+//// OLDDD
+
 #import "ActivityRecViewController.h"
 #import "ActivityRecommendationTableViewCell.h"
 #import "ActivityRecommendation.h"
 #import "MoodDetection.h"
 #import "ChangeEmotionViewController.h"
-#import "DisplayActivityViewController.h"
 #import <Parse/Parse.h>
 #import "RecommendationEngine.h"
 
@@ -23,9 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *headingText;
 @property (strong, nonatomic) NSMutableArray *rainDropsArray;
 @property (strong, nonatomic) IBOutlet ActivityRecView *mainView;
-@property (strong, nonatomic) UILabel *rainDropScoreLabel;
-@property (strong, nonatomic) NSNumber *rainDropCounter;
-@property (strong, nonatomic) NSNumber *rainDropArrayCount;
 - (IBAction)didTapChangeEmotion:(id)sender;
 - (IBAction)didTapAddAcitivity:(id)sender;
 - (IBAction)didTapSelectActivity:(id)sender;
@@ -105,27 +104,6 @@
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [tapRecognizer setDelegate:self];
-    
-    
-    self.rainDropScoreLabel = [[UILabel alloc] init];
-    self.rainDropScoreLabel.backgroundColor = [UIColor clearColor];
-    self.rainDropScoreLabel.numberOfLines = 0;
-    self.rainDropScoreLabel.textColor = [UIColor blackColor];
-    
-    //position label
-    CGRect frame = self.rainDropScoreLabel.frame;
-    frame.origin = CGPointMake((int)([UIScreen mainScreen].bounds.size.width - 75), (int)([UIScreen mainScreen].bounds.size.height - 200));
-    self.rainDropScoreLabel.frame = frame;
-    
-    self.rainDropScoreLabel.text = [@"Score: " stringByAppendingString: [NSString stringWithFormat:@"%@", self.rainDropCounter]];
-    [self.rainDropScoreLabel sizeToFit]; //set width and height of label based on text size
-    [self.view addSubview:self.rainDropScoreLabel];     //add label to view
-    
-    self.rainDropArrayCount = [NSNumber numberWithInt:[self.rainDropArrayCount intValue] + (int)arc4random_uniform(5) + 5];
-    
-    for(int i = 0; i < [self.rainDropArrayCount intValue]; i++){
-        [CATransaction begin];
-        
         UIImageView *sadImage = [[UIImageView alloc] init];
         CGRect imageframe = sadImage.frame;
         
@@ -176,10 +154,6 @@
     }
 }
 
--(BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    for (NSInteger i = self.rainDropsArray.count - 1; i >= 0; i--) {
-        UIImageView *imageView = self.rainDropsArray[i][0];
-        if ([imageView.layer.presentationLayer hitTest:point] && [self.rainDropsArray[i][1]  isEqual: @0]) {
             NSMutableArray *temp = [[NSMutableArray alloc] init];
             [temp addObject:imageView];
             [temp addObject:@1];

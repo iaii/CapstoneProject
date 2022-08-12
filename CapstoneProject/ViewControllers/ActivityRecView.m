@@ -2,8 +2,6 @@
 //  ActivityRecView.m
 //  CapstoneProject
 //
-//  Created by Sanasar Kolyan on 8/3/22.
-//
 
 #import "ActivityRecView.h"
 
