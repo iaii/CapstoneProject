@@ -13,13 +13,15 @@
 #import "ActivityRecommendation.h"
 #import "MoodDetection.h"
 #import "ChangeEmotionViewController.h"
-
 #import <Parse/Parse.h>
+#import "RecommendationEngine.h"
 
 @interface ActivityRecViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSString *mood;
+@property (strong, nonatomic) NSString *firstMood;
+@property (strong, nonatomic) NSString *secondMood;
+@property (strong, nonatomic) NSString *thirdMood;
 @property (weak, nonatomic) IBOutlet UILabel *headingText;
 @property (strong, nonatomic) NSMutableArray *rainDropsArray;
 @property (strong, nonatomic) IBOutlet ActivityRecView *mainView;
@@ -37,19 +39,32 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 125;
-    
+    self.mainView.delegate = self;
     self.recActivities = [[NSMutableArray alloc] init];
     
-    _mood = [self.moodDectetor mood];
-    NSString *heading = [@"Since you're feeling " stringByAppendingString: _mood.lowercaseString];
-    _headingText.text = [heading stringByAppendingString: @" you should"];
+    self.firstMood = [self.moodDectetor firstMood];
+    self.secondMood = [self.moodDectetor secondMood];
+    self.thirdMood = [self.moodDectetor thirdMood];
+
+    self.headingText.text = @"Recommended activities";
+    
+    
+    RecommendationEngine *rec = [[RecommendationEngine alloc] init];
+    rec.firstMood = self.firstMood;
+    rec.secondtMood = self.secondMood;
+    rec.thirdMood = self.thirdMood;
+    
+    [rec getUserInfo];
+    
     
     [self loadAnimations];
-    [self queryActivities];
+//    [self queryActivities: @"firstEmotionTag" : self.firstMood : @4];
+//    [self queryActivities: @"secondEmotionTag" : self.secondMood : @3];
+//    [self queryActivities: @"thridEmotionTag" : self.thirdMood : @2];
 }
 
 -(void) loadAnimations {
-    if([self.mood isEqualToString:@"Happy"]) {
+    if([self.firstMood isEqualToString:@"Happy"]) {
         for(int i = 0; i < 100; i++){
             UIImageView *careImage = [[UIImageView alloc] init];
             
@@ -77,234 +92,168 @@
             flash.autoreverses = YES;
             [careImage.layer addAnimation:flash forKey:@"flashAnimation"];
         }
-    } else if([self.mood isEqualToString:@"Sad"]) {
+    } else if([self.firstMood isEqualToString:@"Sad"]) {
         [self sadAnimation];
     }
 }
 
 -(void)sadAnimation {
-    
-//    UITapGestureRecognizer *singleFingerTap =
-//      [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                              action:@selector(handleSingleTap:)];
-//    [self.view addGestureRecognizer:singleFingerTap];
-    
+    self.rainDropCounter = @0;
+    self.rainDropArrayCount = @0;
     self.rainDropsArray = [[NSMutableArray alloc] init];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-   // [tapRecognizer setNumberOfTapsRequired:1];
     [tapRecognizer setDelegate:self];
-
-    for(int i = 0; i < 15; i++){
         UIImageView *sadImage = [[UIImageView alloc] init];
         CGRect imageframe = sadImage.frame;
         
         sadImage.userInteractionEnabled = YES;
         
         [sadImage addGestureRecognizer:tapRecognizer];
-
+        
+        [CATransaction setCompletionBlock:^{
+            [sadImage removeFromSuperview];
+        }];
+        
         int size = ((int)arc4random_uniform(100) + 25);
         imageframe.size.height = size;
         imageframe.size.width = size;
-        //imageframe.origin = CGPointMake(200, 200);
         imageframe.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         sadImage.frame = imageframe;
         [sadImage setImage:[UIImage imageNamed:@"rain"]];
         [self.view addSubview:sadImage];
         sadImage.layer.zPosition = MAXFLOAT;
-
+        
         CABasicAnimation *animation = [CABasicAnimation animation];
         animation.keyPath = @"position.y";
-        animation.fromValue = @0;
-        animation.toValue = @700;
-        animation.duration = 5; //(int)arc4random_uniform(3) + 1;
-
+        animation.fromValue = @-50;
+        animation.toValue = @800;
+        animation.duration = (int)arc4random_uniform(3) + 2;
         animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5:0.35:0.55:0.3];
-
         animation.beginTime = CACurrentMediaTime() + (int)arc4random_uniform(5);
-
-        sadImage.animationRepeatCount = 1; // loops only once
-
+        
+        sadImage.animationRepeatCount = 1;
+        
         [sadImage.layer addAnimation:animation forKey:@"basic"];
-
-        sadImage.layer.position = CGPointMake((int)arc4random_uniform(500), 0);
-
+        
+        sadImage.layer.position = CGPointMake((int)arc4random_uniform([UIScreen mainScreen].bounds.size.width - size) + size, [UIScreen mainScreen].bounds.size.height + size);
+        
         CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
         flash.fromValue = [NSNumber numberWithFloat:1.0];
         flash.toValue = [NSNumber numberWithFloat:0.0];
-        flash.duration = 7;        // 1 second
-        flash.autoreverses = YES;    // Back
-       // flash.repeatCount = 3;       // Or whatever
-
+        flash.duration = 7;
+        flash.autoreverses = NO;
         [sadImage.layer addAnimation:flash forKey:@"flashAnimation"];
-
         
         NSMutableArray *rainDropImageAndStatus = [[NSMutableArray alloc] init];
         [rainDropImageAndStatus addObject:sadImage];
         [rainDropImageAndStatus addObject:@0];
-        
         [self.rainDropsArray addObject:rainDropImageAndStatus];
+        
+        [CATransaction commit];
     }
 }
 
-- (BOOL)activityRecViewDidhitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    for (NSInteger i = self.rainDropsArray.count-1; i>=0; i--) {
-        UIImageView *imageView = self.rainDropsArray[i][0];
-        if ([imageView.layer.presentationLayer hitTest:point]) {
+            NSMutableArray *temp = [[NSMutableArray alloc] init];
+            [temp addObject:imageView];
+            [temp addObject:@1];
             
-            NSLog(@"did hit %li", (long)i);
+            imageView.alpha = 0;
+            [imageView stopAnimating];
+            [imageView.layer removeAllAnimations];
+            imageView.image = imageView.animationImages.lastObject;
+            
+            [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
+            
+            self.rainDropCounter = [NSNumber numberWithInt:[self.rainDropCounter intValue] + 1];
+            
+            self.rainDropScoreLabel.text = [@"Score: " stringByAppendingString: [NSString stringWithFormat:@"%@", self.rainDropCounter]];
+            
+            if ([self.rainDropCounter intValue] == [self.rainDropArrayCount intValue]) {
+                [self changeSadToHappyAnimation];
+            }
             return true;
         }
     }
     return false;
 }
 
-
--(void)tapped:(UITapGestureRecognizer *) gesture {
-    for (int i = 0; i < self.rainDropsArray.count; i++) {
-        NSArray *currentItem = self.rainDropsArray[i];
-        UIImageView *currentImage = currentItem[0];
-        
-       // [(RootViewController*)currentImage.superview touches began method];
-
-//        CGPoint currentFrame = [image.layer.position];
-       // CGPoint locationInView = [image.window convertPoint:point fromView:image.window];
-
-        if ([currentItem[1] isEqual: @0]) {
-            currentImage.alpha = 0;
-            
-            NSMutableArray *temp = [[NSMutableArray alloc] init];
-            [temp addObject:currentImage];
-            [temp addObject:@1];
-            
-            [currentImage stopAnimating];
-            [currentImage.layer removeAllAnimations];
-            currentImage.image = currentImage.animationImages.lastObject;
-            
-            
-
-            [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
-        }
-    }
-}
-
-//The event handling method
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event handleTap:(UITapGestureRecognizer *) gesture {
-  UITouch *touch = [[event allTouches] anyObject];
-  CGPoint location = [touch locationInView:touch.view];
+-(void)changeSadToHappyAnimation {
     
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-                
-        for (int i = 0; i < self.rainDropsArray.count; i++) {
-            NSArray *currentItem = self.rainDropsArray[i];
-            UIImageView *currentImage = currentItem[0];
-            CGRect currentImageFrame = [currentImage.layer.presentationLayer frame];
+    UIImageView *rainbowImage = [[UIImageView alloc] init];
+    
+    CGRect imageframe = rainbowImage.frame;
+    
+    rainbowImage.userInteractionEnabled = YES;
+    
+    int size = ((int)arc4random_uniform(100) + 25);
+    imageframe.size.height = size;
+    imageframe.size.width = size;
+    imageframe.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, 50);
+    rainbowImage.frame = imageframe;
+    [rainbowImage setImage:[UIImage imageNamed:@"rainbow"]];
+    [self.view addSubview:rainbowImage];
+    rainbowImage.layer.zPosition = MAXFLOAT;
+    
+    imageframe.origin = CGPointMake(-50.0, 25);
+    imageframe.size.width = [UIScreen mainScreen].bounds.size.width + size;
+    imageframe.size.height = size + 150;
+    [UIView animateWithDuration:3.5
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+        rainbowImage.frame = imageframe;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:3.5
+                              delay:0.0
+                            options: UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+            CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
+            flash.fromValue = [NSNumber numberWithFloat: 1.0];
+            flash.toValue = [NSNumber numberWithFloat: 0.0];
+            flash.autoreverses = YES;
+            [rainbowImage.layer addAnimation:flash forKey:@"flashAnimation"];
             
-           // [(RootViewController*)currentImage.superview touches began method];
-
-    //        CGPoint currentFrame = [image.layer.position];
-           // CGPoint locationInView = [image.window convertPoint:point fromView:image.window];
-
-            if (CGRectContainsPoint(currentImageFrame, location) && [currentItem[1] isEqual: @0]) {
-                currentImage.alpha = 0;
-                
-                NSMutableArray *temp = [[NSMutableArray alloc] init];
-                [temp addObject:currentImage];
-                [temp addObject:@1];
-                
-                [currentImage stopAnimating];
-                [currentImage.layer removeAllAnimations];
-                currentImage.image = currentImage.animationImages.lastObject;
-                
-                
-
-                [self.rainDropsArray replaceObjectAtIndex:i withObject:temp];
-            }
-        }
-    }
+        } completion:^(BOOL finished) {
+            [rainbowImage.layer removeAllAnimations];
+            [rainbowImage removeFromSuperview];
+        }];
+    }];
 }
 
-//- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
-//{
-//  CGPoint location = [recognizer locationInView:[recognizer.view superview]];
-//
-//  //
-//
-//}
-
-
--(void)queryActivities {
+-(void)queryActivities:(NSString *)columnName : (NSString *)moodName : (NSNumber *)score {
     
     PFQuery *query = [ActivityRecommendation query];
-    
-    [query whereKey:@"firstEmotionTag" equalTo:_mood];
+    [query whereKey:columnName equalTo: moodName];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
                                               NSError * _Nullable error) {
         if (objects) {
             for(PFObject *object in objects) {
-                NSLog(@"%@", object);
                 NSMutableArray *temp = [[NSMutableArray alloc] init];
                 [temp addObject:object.objectId];
                 [temp addObject:object[@"activity"]];
-                [temp addObject:@4];
+                [temp addObject:score];
                 [temp addObject:object];
                 [self.recActivities addObject:temp];
             }
             [self.tableView reloadData];
         } else {
-            NSLog(@"%@", error);
-        }
-    }];
-    
-    PFQuery *query2 = [ActivityRecommendation query];
-    [query2 whereKey:@"secondEmotionTag" equalTo:_mood];
-    
-    [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
-                                               NSError * _Nullable error) {
-        if (objects) {
-            for(PFObject *object in objects) {
-                NSMutableArray *temp = [[NSMutableArray alloc] init];
-                [temp addObject:object.objectId];
-                [temp addObject:object[@"activity"]];
-                [temp addObject:@3];
-                [temp addObject:object];
-                [self.recActivities addObject:temp];
-            }
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error);
-        }
-    }];
-    
-    PFQuery *query3 = [ActivityRecommendation query];
-    [query3 whereKey:@"thirdEmotionTag" equalTo:_mood];
-    
-    [query3 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects,
-                                               NSError * _Nullable error) {
-        if (objects) {
-            
-            for(PFObject *object in objects){
-                NSMutableArray *temp = [[NSMutableArray alloc] init];
-                [temp addObject:object.objectId];
-                [temp addObject:object[@"activity"]];
-                [temp addObject:@2];
-                [temp addObject:object];
-                [self.recActivities addObject:temp];
-            }
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error);
+            NSLog(@"%@", error); // will change to an alert later
         }
     }];
 }
 
+-(void)displayTopRankedActivities {
+    
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ActivityRecommendationTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
-
+    
     NSArray *activity = _recActivities[indexPath.row];
     [cell setUpActivity: activity[1]];
-
+    
     return cell;
 }
 
@@ -314,6 +263,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DisplayActivityViewController *displayActivityViewController = [storyboard instantiateViewControllerWithIdentifier:@"DisplayActivityViewController"];
+    
+    NSArray *activity = self.recActivities[indexPath.row];
+    displayActivityViewController.activity = activity[1];
+    
+    [self.navigationController pushViewController:displayActivityViewController animated:YES];
 }
 
 - (IBAction)didTapSelectActivity:(id)sender {
@@ -330,7 +291,7 @@
     
     UITableViewCell *cell = sender;
     NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
-    NSArray *activity = _recActivities[myIndexPath.row];
+    NSArray *activity = self.recActivities[myIndexPath.row];
     changeEmotionViewController.activityName = activity[1];
     changeEmotionViewController.activityObjectId = activity[0];
     changeEmotionViewController.userObject = activity[3];

@@ -2,8 +2,6 @@
 //  ActivityRecView.h
 //  CapstoneProject
 //
-//  Created by Apoorva Chilukuri on 8/3/22.
-//
 
 #import <UIKit/UIKit.h>
 

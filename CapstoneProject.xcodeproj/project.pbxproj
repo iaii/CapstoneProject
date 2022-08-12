@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13E20A46289B492500C2CE12 /* ActivityRecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E20A45289B492500C2CE12 /* ActivityRecView.m */; };
 		340771E69C21A348911C9217 /* Pods_CapstoneProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8B93BEB286AB9F3D1316F3 /* Pods_CapstoneProject.framework */; };
 		764D6C76F584A7E1DD57850C /* Pods_CapstoneProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89366882C845FE22C63CE62D /* Pods_CapstoneProjectUITests.framework */; };
 		EC576E09A084256B4E300673 /* Pods_CapstoneProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66950B703E5F785384E3108A /* Pods_CapstoneProjectTests.framework */; };
@@ -19,7 +20,6 @@
 		F576C0FC288731A100C93523 /* ActivityRecommendationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FB288731A100C93523 /* ActivityRecommendationTableViewCell.m */; };
 		F576C0FF289442A700C93523 /* ChangeEmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */; };
 		F576C102289B1EA800C93523 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C101289B1EA800C93523 /* ProfileViewController.m */; };
-		F576C108289B563200C93523 /* ActivityRecView.m in Sources */ = {isa = PBXBuildFile; fileRef = F576C107289B563200C93523 /* ActivityRecView.m */; };
 		F5D0319A287C8F520065FDF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D03199287C8F520065FDF3 /* AppDelegate.m */; };
 		F5D0319D287C8F520065FDF3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0319C287C8F520065FDF3 /* SceneDelegate.m */; };
 		F5D031A3287C8F520065FDF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D031A1287C8F520065FDF3 /* Main.storyboard */; };
@@ -51,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13E20A44289B492500C2CE12 /* ActivityRecView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityRecView.h; sourceTree = "<group>"; };
+		13E20A45289B492500C2CE12 /* ActivityRecView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityRecView.m; sourceTree = "<group>"; };
 		212AFF4A3BDE66FD65861084 /* Pods-CapstoneProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectTests/Pods-CapstoneProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BF5F8F5A7A1B8A63FA53C7F /* Pods-CapstoneProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectUITests/Pods-CapstoneProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		42A3D1D3588070588CAA87E2 /* Pods-CapstoneProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProjectTests/Pods-CapstoneProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,8 +78,6 @@
 		F576C0FE289442A700C93523 /* ChangeEmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeEmotionViewController.m; sourceTree = "<group>"; };
 		F576C100289B1EA800C93523 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		F576C101289B1EA800C93523 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		F576C106289B563200C93523 /* ActivityRecView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityRecView.h; sourceTree = "<group>"; };
-		F576C107289B563200C93523 /* ActivityRecView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityRecView.m; sourceTree = "<group>"; };
 		F5D03195287C8F520065FDF3 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D03198287C8F520065FDF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F5D03199287C8F520065FDF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -173,6 +173,8 @@
 				F5D031D1287C9D270065FDF3 /* AXHomeViewController.m */,
 				F5D031CD287C9A6B0065FDF3 /* LoginViewController.h */,
 				F5D031CE287C9A6B0065FDF3 /* LoginViewController.m */,
+				13E20A44289B492500C2CE12 /* ActivityRecView.h */,
+				13E20A45289B492500C2CE12 /* ActivityRecView.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -180,6 +182,8 @@
 		F576C0F02880F1DF00C93523 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F576C109289DE06F00C93523 /* RecommendationEngine.h */,
+				F576C10A289DE06F00C93523 /* RecommendationEngine.m */,
 				F576C0E52880E0C600C93523 /* ActivityRecommendation.h */,
 				F576C0E62880E0C600C93523 /* ActivityRecommendation.m */,
 				F576C0F42882197100C93523 /* MoodDetection.h */,
@@ -420,11 +424,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,7 +476,9 @@
 				F5D031CF287C9A6B0065FDF3 /* LoginViewController.m in Sources */,
 				F576C0F62882197100C93523 /* MoodDetection.m in Sources */,
 				F576C0ED2880EFFA00C93523 /* DisplayActivityViewController.m in Sources */,
+				F576C10B289DE06F00C93523 /* RecommendationEngine.m in Sources */,
 				F576C0F32880F2AC00C93523 /* SignUpViewController.m in Sources */,
+				13E20A46289B492500C2CE12 /* ActivityRecView.m in Sources */,
 				F576C0E72880E0C600C93523 /* ActivityRecommendation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
