@@ -9,7 +9,24 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface HappyAnimationDestination : NSObject
+
+@property (nonatomic) int x;
+@property (nonatomic) int y;
+
+@end
+
+@interface SadAnimationDestination : NSObject
+
+@property (nonatomic) int x;
+@property (nonatomic) int y;
+
+@end
+
 @interface AXAnimationHelper : NSObject
+
++ (HappyAnimationDestination *)generateHappyDestination;
++ (SadAnimationDestination *)generateSadDestination;
 
 @end
 

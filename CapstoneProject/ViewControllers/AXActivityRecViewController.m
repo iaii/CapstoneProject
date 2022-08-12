@@ -13,6 +13,7 @@
 #import "AXDisplayActivityViewController.h"
 #import <Parse/Parse.h>
 #import "AXRecommendationEngine.h"
+#import "AXAnimationHelper.h"
 
 @interface AXActivityRecViewController ()
 
@@ -40,7 +41,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.rowHeight = 50;
+    self.tableView.rowHeight = 175;
     self.mainView.delegate = self;
     self.recActivities = [[NSMutableArray alloc] init];
     
@@ -60,41 +61,65 @@
 }
 
 #pragma animations
--(void) loadAnimations {
+- (void) loadAnimations {
     if([self.firstMood isEqualToString:@"Happy"]) {
-        for(int i = 0; i < 100; i++){
-            UIImageView *careImage = [[UIImageView alloc] init];
-            
-            CGRect imageframe = careImage.frame;
-            
-            int size = ((int)arc4random_uniform(100) + 25);
-            imageframe.size.height = size;
-            imageframe.size.width = size;
-            imageframe.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-            careImage.frame = imageframe;
-            [careImage setImage:[UIImage imageNamed:@"care"]];
-            [self.view addSubview:careImage];
-            careImage.layer.zPosition = MAXFLOAT;
-            
-            NSArray *pathArray = @[[NSValue valueWithCGPoint:CGPointMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)], [NSValue valueWithCGPoint:CGPointMake((int)arc4random_uniform(500), (int)arc4random_uniform(950))]];
-            CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-            pathAnimation.values = pathArray;
-            pathAnimation.duration = 2.5;
-            [careImage.layer addAnimation:pathAnimation forKey:@"position"];
-            
-            CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
-            flash.fromValue = [NSNumber numberWithFloat: (float)arc4random_uniform(100)];
-            flash.toValue = [NSNumber numberWithFloat: 0.0];
-            flash.duration = (float)arc4random_uniform(5);
-            flash.autoreverses = YES;
-            [careImage.layer addAnimation:flash forKey:@"flashAnimation"];
-        }
+        [self happyAnimations];
     } else if([self.firstMood isEqualToString:@"Sad"]) {
         [self sadAnimation];
     }
 }
 
--(void)sadAnimation {
+- (void)happyAnimations {
+    for(int i = 0; i < 50; i++){
+        [CATransaction begin];
+        UIImageView *careImage = [[UIImageView alloc] init];
+        
+        CGRect imageframe = careImage.frame;
+        
+        int size = ((int)arc4random_uniform(100) + 25);
+        imageframe.size.height = size;
+        imageframe.size.width = size;
+        imageframe.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        careImage.frame = imageframe;
+        [careImage setImage:[UIImage imageNamed:@"care"]];
+        [self.view addSubview:careImage];
+        careImage.layer.zPosition = MAXFLOAT;
+        
+        CAMediaTimingFunctionName timeFunction = kCAMediaTimingFunctionLinear;
+        if (arc4random_uniform(2) == 0) {
+            timeFunction = kCAMediaTimingFunctionEaseIn;
+        } else {
+            timeFunction = kCAMediaTimingFunctionEaseInEaseOut;
+        }
+        
+        HappyAnimationDestination *destination = [AXAnimationHelper generateHappyDestination];
+        
+        NSArray *pathArray = @[[NSValue valueWithCGPoint:CGPointMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)], [NSValue valueWithCGPoint:CGPointMake(destination.x, destination.y)]];
+        CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        pathAnimation.values = pathArray;
+        pathAnimation.duration = arc4random_uniform(3) + 2;
+        [pathAnimation setRemovedOnCompletion:YES];
+        [pathAnimation setTimingFunction:[CAMediaTimingFunction functionWithName:timeFunction]];
+
+        CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        flash.fromValue = [NSNumber numberWithFloat: (float)arc4random_uniform(100)];
+        flash.toValue = [NSNumber numberWithFloat: 0.0];
+        flash.duration = (float)arc4random_uniform(5);
+        flash.autoreverses = YES;
+        [flash setRemovedOnCompletion:YES];
+        
+        [CATransaction setCompletionBlock:^{
+            [careImage removeFromSuperview];
+        }];
+        
+        [careImage.layer addAnimation:flash forKey:@"flashAnimation"];
+        [careImage.layer addAnimation:pathAnimation forKey:@"position"];
+        
+        [CATransaction commit];
+    }
+}
+
+- (void)sadAnimation {
     self.rainDropCounter = @0;
     self.rainDropArrayCount = @0;
     self.rainDropsArray = [[NSMutableArray alloc] init];
@@ -106,7 +131,7 @@
     self.rainDropScoreLabel = [[UILabel alloc] init];
     self.rainDropScoreLabel.backgroundColor = [UIColor clearColor];
     self.rainDropScoreLabel.numberOfLines = 0;
-    self.rainDropScoreLabel.textColor = [UIColor blackColor];
+    self.rainDropScoreLabel.textColor = [UIColor whiteColor];
     
     //position label
     CGRect frame = self.rainDropScoreLabel.frame;
@@ -129,10 +154,6 @@
         
         [sadImage addGestureRecognizer:tapRecognizer];
         
-        [CATransaction setCompletionBlock:^{
-            [sadImage removeFromSuperview];
-        }];
-        
         int size = ((int)arc4random_uniform(100) + 25);
         imageframe.size.height = size;
         imageframe.size.width = size;
@@ -151,9 +172,7 @@
         animation.beginTime = CACurrentMediaTime() + (int)arc4random_uniform(5);
         
         sadImage.animationRepeatCount = 1;
-        
-        [sadImage.layer addAnimation:animation forKey:@"basic"];
-        
+                
         sadImage.layer.position = CGPointMake((int)arc4random_uniform([UIScreen mainScreen].bounds.size.width - size) + size, [UIScreen mainScreen].bounds.size.height + size);
         
         CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -161,6 +180,12 @@
         flash.toValue = [NSNumber numberWithFloat:0.0];
         flash.duration = 7;
         flash.autoreverses = NO;
+        
+        [CATransaction setCompletionBlock:^{
+            [sadImage removeFromSuperview];
+        }];
+        
+        [sadImage.layer addAnimation:animation forKey:@"basic"];
         [sadImage.layer addAnimation:flash forKey:@"flashAnimation"];
         
         NSMutableArray *rainDropImageAndStatus = [[NSMutableArray alloc] init];
@@ -270,6 +295,7 @@
 - (IBAction)didTapAddAcitivity:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AXChangeEmotionViewController *customeActivityViewController = [storyboard instantiateViewControllerWithIdentifier:@"CustomeActivityViewController"];
+    [self.tableView reloadData];
     [self.navigationController pushViewController:customeActivityViewController animated:YES];
 }
 
@@ -284,7 +310,10 @@
     changeEmotionViewController.activityObjectId = activity[0];
     changeEmotionViewController.userObject = activity[3];
     
+    
     [self.navigationController pushViewController:changeEmotionViewController animated:YES];
+    [self.tableView reloadData];
+
 }
 
 #pragma UITableView Methods
