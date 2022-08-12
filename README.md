@@ -4,6 +4,8 @@ ActivityX is a mood-based activity recommender.
 
 Time spent: 240 hours spent in total
 
+Due to merge conflicts, if possible please look at this latest code: [CapstoneProject-main.zip](https://github.com/iaii/CapstoneProject/files/9329375/CapstoneProject-main.zip)
+
 ## User Stories
 
 - [x] User sees an app icon on the home screen and a styled launch screen.
